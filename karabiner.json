@@ -1,0 +1,535 @@
+{
+  "global" : {
+    "check_for_updates_on_startup" : true,
+    "show_in_menu_bar" : true,
+    "show_profile_name_in_menu_bar" : false
+  },
+  "profiles" : [ {
+    "complex_modifications" : {
+      "parameters" : {
+        "basic.simultaneous_threshold_milliseconds" : 50,
+        "basic.to_delayed_action_delay_milliseconds" : 500,
+        "basic.to_if_alone_timeout_milliseconds" : 1000,
+        "basic.to_if_held_down_threshold_milliseconds" : 500
+      },
+      "rules" : [ {
+        "description" : "command b to backslash",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "grave_accent_and_tilde",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "7",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Map eject to weird shortcut aka touchbar in BTT",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "lang2"
+          },
+          "to" : [ {
+            "key_code" : "non_us_backslash",
+            "modifiers" : [ "right_command", "right_control", "right_option", "right_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Remap screenshot",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "s",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "5",
+            "modifiers" : [ "left_command", "left_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "non_us_backslash",
+            "modifiers" : [ "right_command", "right_control", "right_option", "right_shift" ]
+          } ],
+          "from" : {
+            "key_code" : "caps_lock",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_shift",
+            "modifiers" : [ "right_command", "right_control", "right_option" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "caps_lock space = delete",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "spacebar",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "spacebar",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "spacebar",
+            "modifiers" : {
+              "mandatory" : [ "fn" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : [ "fn" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "caps_lock+ijkl = arrows",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "up_arrow"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "k",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "down_arrow"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "left_shift", "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_shift", "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "option/shift/FN and ijkl = arrows and mofifiers",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "fn" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "end"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "fn" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "home"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "left_shift", "fn" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "home",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_shift", "fn" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "end",
+            "modifiers" : [ "left_shift" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "Disable arrows",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_arrow"
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "right_arrow"
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "up_arrow"
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "down_arrow"
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "disable backspace",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "delete_or_backspace"
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "type" : "basic"
+        } ]
+      } ]
+    },
+    "devices" : [ ],
+    "fn_function_keys" : [ {
+      "from" : {
+        "key_code" : "f1"
+      },
+      "to" : {
+        "consumer_key_code" : "display_brightness_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f2"
+      },
+      "to" : {
+        "consumer_key_code" : "display_brightness_increment"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f3"
+      },
+      "to" : {
+        "key_code" : "mission_control"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f4"
+      },
+      "to" : {
+        "key_code" : "launchpad"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f5"
+      },
+      "to" : {
+        "key_code" : "illumination_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f6"
+      },
+      "to" : {
+        "key_code" : "illumination_increment"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f7"
+      },
+      "to" : {
+        "consumer_key_code" : "rewind"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f8"
+      },
+      "to" : {
+        "consumer_key_code" : "play_or_pause"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f9"
+      },
+      "to" : {
+        "consumer_key_code" : "fastforward"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f10"
+      },
+      "to" : {
+        "consumer_key_code" : "mute"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f11"
+      },
+      "to" : {
+        "consumer_key_code" : "volume_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f12"
+      },
+      "to" : {
+        "consumer_key_code" : "volume_increment"
+      }
+    } ],
+    "name" : "Default",
+    "selected" : true,
+    "simple_modifications" : [ {
+      "from" : {
+        "consumer_key_code" : "eject"
+      },
+      "to" : {
+        "key_code" : "japanese_eisuu"
+      }
+    } ],
+    "virtual_hid_keyboard" : {
+      "country_code" : 0,
+      "mouse_key_xy_scale" : 100
+    }
+  }, {
+    "complex_modifications" : {
+      "parameters" : {
+        "basic.simultaneous_threshold_milliseconds" : 50,
+        "basic.to_delayed_action_delay_milliseconds" : 500,
+        "basic.to_if_alone_timeout_milliseconds" : 1000,
+        "basic.to_if_held_down_threshold_milliseconds" : 500,
+        "mouse_motion_to_scroll.speed" : 100
+      },
+      "rules" : [ ]
+    },
+    "devices" : [ ],
+    "fn_function_keys" : [ {
+      "from" : {
+        "key_code" : "f1"
+      },
+      "to" : {
+        "consumer_key_code" : "display_brightness_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f2"
+      },
+      "to" : {
+        "consumer_key_code" : "display_brightness_increment"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f3"
+      },
+      "to" : {
+        "key_code" : "mission_control"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f4"
+      },
+      "to" : {
+        "key_code" : "launchpad"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f5"
+      },
+      "to" : {
+        "key_code" : "illumination_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f6"
+      },
+      "to" : {
+        "key_code" : "illumination_increment"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f7"
+      },
+      "to" : {
+        "consumer_key_code" : "rewind"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f8"
+      },
+      "to" : {
+        "consumer_key_code" : "play_or_pause"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f9"
+      },
+      "to" : {
+        "consumer_key_code" : "fastforward"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f10"
+      },
+      "to" : {
+        "consumer_key_code" : "mute"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f11"
+      },
+      "to" : {
+        "consumer_key_code" : "volume_decrement"
+      }
+    }, {
+      "from" : {
+        "key_code" : "f12"
+      },
+      "to" : {
+        "consumer_key_code" : "volume_increment"
+      }
+    } ],
+    "name" : "New profile",
+    "selected" : false,
+    "simple_modifications" : [ ],
+    "virtual_hid_keyboard" : {
+      "country_code" : 0,
+      "mouse_key_xy_scale" : 100
+    }
+  } ]
+}
