@@ -28,6 +28,10 @@
                                                  [:!Fspacebar :!Fdelete_or_backspace]
                                                  ]}
 
+        {:des "Remap enter key to be closer" :rules [
+                                                     [:!Sspacebar :return_or_enter]
+                                                     ]}
+
         {:des "caps_lock+ijkl = arrows" :rules [
                                                 [:!QWERi :up_arrow]
                                                 [:!QWERk :down_arrow]
