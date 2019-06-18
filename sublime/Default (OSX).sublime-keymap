@@ -1,0 +1,16 @@
+//Symlinked to /Users/au479136/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap
+
+
+//Jetbrains shortcut bindings from: https://gist.github.com/sadimusi/7aaf2cf512a007038c684a50fd2dec51
+
+[
+	{"keys": ["command+option+l"], "command": "reindent", "args": {"single_line": false}},
+	{ "keys": ["super+d"], "command": "duplicate_line" },
+	{ "keys": ["shift+alt+up"], "command": "swap_line_up" },
+	{ "keys": ["shift+alt+down"], "command": "swap_line_down" },
+	{ "keys": ["ctrl+g"], "command": "find_under_expand" },
+	{ "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+	{ "keys": ["super+shift+a"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+	{ "keys": ["super+r"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
+	{ "keys": ["shift+tab"], "command": "unindent" }
+]
