@@ -10,6 +10,7 @@
 
 {
  :templates {:open       "open \"%s\""
+             :open-finder       "open %s"
              :alfred     "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
              :kb-maestro "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
              }
@@ -61,6 +62,7 @@
               :rules [:launch-mode
                       [:c [:kb-maestro "app: Chrome"]]
                       [:s [:kb-maestro "app: Spotify"]]
+                      [:f [:open-finder "~"]]
                       ]}
 
 
