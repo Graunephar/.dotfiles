@@ -60,6 +60,7 @@
              {:des   "Launch mode through pressing a:"
               :rules [:launch-mode
                       [:c [:kb-maestro "app: Chrome"]]
+                      [:s [:kb-maestro "app: Spotify"]]
                       ]}
 
 
