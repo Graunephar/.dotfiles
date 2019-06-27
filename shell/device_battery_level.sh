@@ -4,7 +4,8 @@
 DEVICES=$(ioreg -r -l -n AppleHSBluetoothDevice | egrep '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ') #Lets get a list of all bluetooth devices
 
 DEVICELINE=$(grep -n "$1" <<< "$DEVICES") #$1 is the device that this script was called with. Lets extract only the line ith that device
-if [$DEVICELINE = ""]
+
+if [ "$DEVICELINE" = "" ]
 then
 
 	echo "" #Device not present, lets give BTT an empty string
