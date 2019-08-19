@@ -64,9 +64,6 @@
 	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
 	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1; }; f"
 
-	ttt = "!f() { source $HOME/.git_alias_functions.sh; }; f"
-
-
 	# Working with branches
 	#
 
@@ -78,10 +75,12 @@
 	# Push the current branch to the remote "origin", and set it to track
 	# the upstream branch
 	publish = "!git push -u origin $(git branch-name)"
+	
 	# Delete the remote version of the current branch
 	unpublish = "!git push origin :$(git branch-name)"
+
 	#Deletes the branch by name and removes the local counterpart 	
-	#SHould be expanded with a check to see if variabæle is sendt	
+	#SHould be expanded with a check to see if variable is sent	
 	unpublish-all = "!f() { git checkout $1 && git unpublish && git home && git branch -D $1; }; f"
 	
 
