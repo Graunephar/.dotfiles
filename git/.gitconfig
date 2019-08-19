@@ -61,6 +61,12 @@
 	pretty-branches = branch -vv
 	pb = pretty-branches
 	
+	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
+	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1; }; f"
+
+	ttt = "!f() { source $HOME/.git_alias_functions.sh; }; f"
+
+
 	# Working with branches
 	#
 

@@ -19,3 +19,14 @@ ask 'Are you sure? (y/n) ' "Yy" && ask "This will force push to the repo. Deleti
 
 }
 
+
+function check_input {
+	if [ -z "$1" ]
+	then
+	      echo "Please provide input to this command"
+	      return 1
+	else
+	      return 0
+	fi
+}
+
