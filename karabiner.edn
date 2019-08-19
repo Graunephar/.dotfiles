@@ -9,10 +9,10 @@
 ;; TO have multiple option keys use one of them as the actual key, eg: !SCTleft_option
 
 {
- :templates {:open       "open \"%s\""
-             :open-finder       "open %s"
-             :alfred     "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
-             :kb-maestro "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
+ :templates {:open        "open \"%s\""
+             :open-finder "open %s"
+             :alfred      "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
+             :kb-maestro  "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
              }
 
  :simlayers {:launch-mode {:key :a}
@@ -28,6 +28,9 @@
 
 
              {:des "Remap screenshot" :rules [[:!CTSs :!CS5]]}
+
+
+             {:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
 
 
              {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
@@ -94,13 +97,13 @@
                                                                              ]}
 
              ;;DIsable arrow keys until new habit is learned
-             {:des "Disable arrows" :rules [
-                                            [:left_arrow :vk_none]
-                                            [:right_arrow :vk_none]
-                                            [:up_arrow :vk_none]
-                                            [:down_arrow :vk_none]
-                                            ]}
+             ;; {:des "Disable arrows" :rules [
+             ;;                               [:left_arrow :vk_none]
+             ;;                               [:right_arrow :vk_none]
+             ;;                               [:up_arrow :vk_none]
+             ;;                               [:down_arrow :vk_none]
+             ;; ]}
 
-             {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
+             ;;{:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
 
              ]}

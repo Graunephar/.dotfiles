@@ -26,6 +26,7 @@
 	co = checkout
 	cob = co -b
 	cub = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
+	cup = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
 	say = "!f() { msg=${1-Hello World}; echo $msg;  }; f"
 	dangrevert = !bash -c 'source $HOME/.git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
 	acm = !git add . && git commit -m	

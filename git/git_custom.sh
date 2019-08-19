@@ -10,4 +10,7 @@ alias gpp="git pull"
 #Aliasing hub from github to be used with the git command
 eval "$(hub alias -s)" 
 
+#Aliasing lab from gitlab to be used with git command
+alias git=lab
+
 
