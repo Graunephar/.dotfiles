@@ -17,6 +17,15 @@ fi
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
+#PYTHON ENV fior pycharm
+export PATH="$PATH:/Users/au479136/Library/Python/2.7/bin"
+
+#Composer for laravel
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+alias composer="php /usr/local/bin/composer.phar"
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+
 
 ####### CUSTOM STUFF (old bashrc) 
 

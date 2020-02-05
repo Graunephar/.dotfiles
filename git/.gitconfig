@@ -1,6 +1,7 @@
 [user]
-	email = daniel@graungaard.com
+	email = graungaard@cs,au.dk
 	name = Daniel Graungaard
+	signingKey = ""
 [push]
 	default = simple
 [credential]
@@ -62,7 +63,7 @@
 	pb = pretty-branches
 	
 	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
-	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1; }; f"
+	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1 && echo "done"; }; f"
 
 	# Working with branches
 	#
@@ -148,3 +149,9 @@
 
 
 
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false

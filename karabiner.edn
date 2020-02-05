@@ -20,6 +20,8 @@
 
              }
 
+ :applications {:chrome ["^com\\.google\\.Chrome$"]
+                :superhuman ["^com\\.superhuman\\.electron$"]}
 
  :main      [
              {:des "command b to backslash" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
@@ -55,8 +57,20 @@
                                                      [:!QWERl :right_arrow]
                                                      [:!QWERSj :!Sleft_arrow]
                                                      [:!QWERSl :!Sright_arrow]
+
+                                                     [:!QWERa :up_arrow]
+                                                     [:!QWERs :down_arrow]
+                                                     [:!QWERa :left_arrow]
+                                                     [:!QWERd :right_arrow]
+                                                     [:!QWERSa :!Sleft_arrow]
+                                                     [:!QWERSd :!Sright_arrow]
+
                                                      ]}
 
+
+             ;; Superhuman
+             ;{:des "Snippets in superhuman" :rules [[:!Ocomma :!Csemicolon [:chrome :superhuman]]]}
+ ,
 
              ;; LAUNCH
 
