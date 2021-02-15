@@ -11,7 +11,7 @@
 {
  :templates {:open        "open \"%s\""
              :open-finder "open %s"
-             :alfred      "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflow \"%s\" with argument \"\"'"
+             :alfred      "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflowafat \"%s\" with argument \"\"'"
              :kb-maestro  "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
              }
 
@@ -20,8 +20,11 @@
 
              }
 
+
+ ;;Get App  id by  -->: osascript -e 'id of app "Name of App"'
  :applications {:chrome ["^com\\.google\\.Chrome$"]
-                :superhuman ["^com\\.superhuman\\.electron$"]}
+                :superhuman ["^com\\.superhuman\\.electron$"]
+                }
 
  :main      [
              {:des "command b to backslash" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
@@ -32,7 +35,8 @@
              {:des "Remap screenshot" :rules [[:!CTSs :!CS5]]}
 
 
-             {:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
+             ;:; I do not think I am ever going to use Nvivo again
+             ;;{:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
 
 
              {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
@@ -50,7 +54,7 @@
                                                           [:!QWERSspacebar :return_or_enter]
                                                           ]}
 
-             {:des "caps_lock+ijkl = arrows" :rules [
+             {:des "caps_lock+ijkl & + wasd = arrows" :rules [
                                                      [:!QWERi :up_arrow]
                                                      [:!QWERk :down_arrow]
                                                      [:!QWERj :left_arrow]
@@ -79,7 +83,11 @@
               :rules [:launch-mode
                       [:c [:kb-maestro "app: Chrome"]]
                       [:s [:kb-maestro "app: Spotify"]]
+                      [:t [:kb-maestro "app: Toggl"]]
                       [:f [:open-finder "~"]]
+                      [:d [:kb-maestro "app: Slack"]]
+                      [:o [:kb-maestro "app: Outlook"]]
+
                       ]}
 
 
@@ -106,18 +114,21 @@
                                                                              [:!Fj :home] ;; same
                                                                              [:!SOj :!SOleft_arrow]
                                                                              [:!SOl :!SOright_arrow]
+                                                                             [:!SOi :!SOup_arrow]
+                                                                             [:!SOk :!SOdown_arrow]
                                                                              [:!SFj :!Shome]
                                                                              [:!SFl :!Send]
                                                                              ]}
 
-             ;;DIsable arrow keys until new habit is learned
-             ;; {:des "Disable arrows" :rules [
-             ;;                               [:left_arrow :vk_none]
-             ;;                               [:right_arrow :vk_none]
-             ;;                               [:up_arrow :vk_none]
-             ;;                               [:down_arrow :vk_none]
-             ;; ]}
+             ;;DIsable  keys until new habit is learned
+             {:des "Disable arrows" :rules [
+                                            [:left_arrow :vk_none]
+                                            [:right_arrow :vk_none]
+                                            [:up_arrow :vk_none]
+                                            [:down_arrow :vk_none]
+              ]}
 
-             ;;{:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
+             {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
+             {:des "disable enter" :rules [[:return_or_enter :vk_none]]}
 
              ]}

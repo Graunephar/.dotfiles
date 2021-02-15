@@ -16,7 +16,6 @@ fi
 #https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
 #PYTHON ENV fior pycharm
 export PATH="$PATH:/Users/au479136/Library/Python/2.7/bin"
 
@@ -28,6 +27,10 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 
 
 ####### CUSTOM STUFF (old bashrc) 
+
+# Brew 
+export PATH=/opt/homebrew/bin:$PATH
+
 
 #Aliaser
 #Aliaser
@@ -47,8 +50,7 @@ fpath=(~/.dotfiles/zsh_fath_dir $fpath)
 
 
 
-#Doing all the git related stuff
-source ~/.dotfiles/git/git_custom.sh
+
 
 # update mkdir so we automatically steps into new directories
 function mkcd {
@@ -79,12 +81,16 @@ function ask() {
 
 }
 
+#Load a locale bin directory with all the local bin stuff
+export PATH=~/bin:$PATH
+
+
 #GraalVM
 #export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 #export PATH=$JAVA_HOME/bin:$PATH
 
 #More graal for Tortoise (netlogo-web)
-GRAAL_HOME='/Library/Java/JavaVirtualMachines/graalvm-ce-1.0.0-rc12/Contents/Home'
+#GRAAL_HOME='/Library/Java/JavaVirtualMachines/graalvm-ce-1.0.0-rc12/Contents/Home'
 #GRAAL_HOME='/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.2/Contents/Home/'
 
 
@@ -94,3 +100,11 @@ GRAAL_HOME='/Library/Java/JavaVirtualMachines/graalvm-ce-1.0.0-rc12/Contents/Hom
 
 # NEXT: Lets generate an ASCII picture of a cow saying a random quote
 cowsay $(fortune)
+
+
+
+
+#Doing all the git related stuff
+source ~/.dotfiles/git/git_custom.sh
+
+
