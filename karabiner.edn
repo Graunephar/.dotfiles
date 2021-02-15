@@ -57,23 +57,42 @@
 
 
              {:des "caps_lock+ijkl & + wasd = arrows" :rules [
-                                                     [:!QWERi :up_arrow]
-                                                     [:!QWERk :down_arrow]
+
                                                      [:!QWERj :left_arrow]
                                                      [:!QWERl :right_arrow]
+                                                     [:!QWERi :up_arrow]
+                                                     [:!QWERk :down_arrow]
                                                      [:!QWERSj :!Sleft_arrow]
                                                      [:!QWERSl :!Sright_arrow]
                                                      [:!QWERSi :!Sup_arrow]
                                                      [:!QWERSk :!Sdown_arrow]
 
-                                                     [:!QWERw :up_arrow]
-                                                     [:!QWERs :down_arrow]
+                                                     [:!QWEROj :!Oleft_arrow]
+                                                     [:!QWEROl :!Oright_arrow]
+                                                     [:!QWEROi :!Oup_arrow]
+                                                     [:!QWEROk :!Odown_arrow]
+                                                     [:!QWERSOj :!SOleft_arrow]
+                                                     [:!QWERSOl :!SOright_arrow]
+                                                     [:!QWERSOi :!SOup_arrow]
+                                                     [:!QWERSOk :!SOdown_arrow]
+
                                                      [:!QWERa :left_arrow]
                                                      [:!QWERd :right_arrow]
+                                                     [:!QWERw :up_arrow]
+                                                     [:!QWERs :down_arrow]
                                                      [:!QWERSa :!Sleft_arrow]
                                                      [:!QWERSd :!Sright_arrow]
                                                      [:!QWERSw :!Sup_arrow]
                                                      [:!QWERSs :!Sdown_arrow]
+
+                                                     [:!QWEROa :!Oleft_arrow]
+                                                     [:!QWEROd :!Oright_arrow]
+                                                     [:!QWEROw :!Oup_arrow]
+                                                     [:!QWEROs :!Odown_arrow]
+                                                     [:!QWERSOa :!SOleft_arrow]
+                                                     [:!QWERSOd :!SOright_arrow]
+                                                     [:!QWERSOw :!SOup_arrow]
+                                                     [:!QWERSOs :!SOdown_arrow]
 
                                                      ]}
 
