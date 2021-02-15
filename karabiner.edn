@@ -53,6 +53,7 @@
              {:des "Remap enter key to be closer" :rules [
                                                           [:!QWERSspacebar :return_or_enter]
                                                           ]}
+             ;;TODO Decide which you actually use
 
              {:des "caps_lock+ijkl & + wasd = arrows" :rules [
                                                      [:!QWERi :up_arrow]
@@ -61,6 +62,8 @@
                                                      [:!QWERl :right_arrow]
                                                      [:!QWERSj :!Sleft_arrow]
                                                      [:!QWERSl :!Sright_arrow]
+                                                     [:!QWERSi :!Sup_arrow]
+                                                     [:!QWERSk :!Sdown_arrow]
 
                                                      [:!QWERw :up_arrow]
                                                      [:!QWERs :down_arrow]
@@ -68,8 +71,26 @@
                                                      [:!QWERd :right_arrow]
                                                      [:!QWERSa :!Sleft_arrow]
                                                      [:!QWERSd :!Sright_arrow]
+                                                     [:!QWERSw :!Sup_arrow]
+                                                     [:!QWERSs :!Sdown_arrow]
 
                                                      ]}
+
+
+
+
+             {:des "option/shift/FN and ijkl = arrows and mofifiers" :rules [
+                                                                             [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
+                                                                             [:!Ol :!Oright_arrow] ;; same
+                                                                             [:!Fl :end] ;; and with FN because I cant decide
+                                                                             [:!Fj :home] ;; same
+                                                                             [:!SOj :!SOleft_arrow]
+                                                                             [:!SOl :!SOright_arrow]
+                                                                             [:!SOi :!SOup_arrow]
+                                                                             [:!SOk :!SOdown_arrow]
+                                                                             [:!SFj :!Shome]
+                                                                             [:!SFl :!Send]
+                                                                             ]}
 
 
              ;; Superhuman
@@ -105,20 +126,7 @@
                                   ]}
 
 
-             ;;TODO Decide which you actually use
 
-             {:des "option/shift/FN and ijkl = arrows and mofifiers" :rules [
-                                                                             [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
-                                                                             [:!Ol :!Oright_arrow] ;; same
-                                                                             [:!Fl :end] ;; and with FN because I cant decide
-                                                                             [:!Fj :home] ;; same
-                                                                             [:!SOj :!SOleft_arrow]
-                                                                             [:!SOl :!SOright_arrow]
-                                                                             [:!SOi :!SOup_arrow]
-                                                                             [:!SOk :!SOdown_arrow]
-                                                                             [:!SFj :!Shome]
-                                                                             [:!SFl :!Send]
-                                                                             ]}
 
              ;;DIsable  keys until new habit is learned
              {:des "Disable arrows" :rules [
