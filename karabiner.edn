@@ -55,6 +55,7 @@
                                                           ]}
              ;;TODO Decide which you actually use
 
+
              {:des "caps_lock+ijkl & + wasd = arrows" :rules [
                                                      [:!QWERi :up_arrow]
                                                      [:!QWERk :down_arrow]
