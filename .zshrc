@@ -31,6 +31,10 @@ export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 # Brew 
 export PATH=/opt/homebrew/bin:$PATH
 
+#load custom python dir
+export PATH=~/.dotfiles/python:$PATH
+
+
 
 #Aliaser
 #Aliaser
@@ -85,6 +89,7 @@ function ask() {
 export PATH=~/bin:$PATH
 
 
+
 #GraalVM
 #export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 #export PATH=$JAVA_HOME/bin:$PATH
@@ -94,12 +99,15 @@ export PATH=~/bin:$PATH
 #GRAAL_HOME='/Library/Java/JavaVirtualMachines/graalvm-ce-19.0.2/Contents/Home/'
 
 
+#Android
+export PATH=$PATH:~/Library/Android/sdk/platform-tools/
+
 
 #Grineren
 
 
 # NEXT: Lets generate an ASCII picture of a cow saying a random quote
-cowsay $(fortune)
+cowsay $(quotecookie.py)
 
 
 

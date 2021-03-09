@@ -29,4 +29,3 @@ function check_input {
 	      return 0
 	fi
 }
-

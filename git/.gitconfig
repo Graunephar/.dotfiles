@@ -30,7 +30,7 @@
 	cub = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
 	cup = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
 	say = "!f() { msg=${1-Hello World}; echo $msg;  }; f"
-	dangrevert = !bash -c 'source $HOME/.git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
+	dangrevert = !bash -c 'source $HOME/.dotfiles/git/git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
 	acm = !git add . && git commit -m	
 	st = status
 	pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
@@ -64,7 +64,7 @@
 	pb = pretty-branches
 	
 	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
-	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1 && echo "done"; }; f"
+	fig = "!f() { source $HOME/.dotfiles/git/git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1 && echo "done"; }; f"
 
 	# Working with branches
 	#
@@ -142,9 +142,6 @@
 	
 	#Allow Empty commit (for forcing post-receive script to run on remote)
 	ecm = commit --allow-empty -m 
-
-
-
 
 
 
