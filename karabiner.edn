@@ -48,6 +48,7 @@
                                                       [:!QWERspacebar :delete_or_backspace]
                                                       [:!QWEROspacebar :!Odelete_or_backspace]
                                                       [:!QWERFspacebar :!Fdelete_or_backspace]
+                                                      [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
                                                       ]}
 
              {:des "Remap enter key to be closer" :rules [
