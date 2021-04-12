@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>ch.martin-apps.alfred.qrcode</string>
+	<key>connections</key>
+	<dict>
+		<key>3E554F3A-9D95-4D8B-9797-FDE6FDA14DCD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CFA06FFD-012C-4D3E-ABF8-DAEF98F28F3F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CFA06FFD-012C-4D3E-ABF8-DAEF98F28F3F</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Martin Schilliger</string>
+	<key>description</key>
+	<string>Create a QR-Code from Alfred</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>QR-Code</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>qr</string>
+				<key>subtext</key>
+				<string>Create a QR-Code of '{query}'</string>
+				<key>text</key>
+				<string>Create QR-Code</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>3E554F3A-9D95-4D8B-9797-FDE6FDA14DCD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>'''
+QR-Code v1.0
+
+Github: https://github.com/martinschilliger/alfred-qr-code
+Author: Martin Schilliger
+'''
+/usr/local/bin/qrencode -o tmp.png -s 20 {query}
+/usr/bin/qlmanage -p tmp.png
+rm tmp.png</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>CFA06FFD-012C-4D3E-ABF8-DAEF98F28F3F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Make shure to install qrencode, for example with brew.sh:
+
+```
+brew install qrencode
+```</string>
+	<key>uidata</key>
+	<dict>
+		<key>3E554F3A-9D95-4D8B-9797-FDE6FDA14DCD</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>note</key>
+			<string>1. Add a keyword object by right-clicking the canvas and choosing Inputs &gt; Keyword. Set the keyword and title to show it in Alfred's results.</string>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>CFA06FFD-012C-4D3E-ABF8-DAEF98F28F3F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>265</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://www.martin-apps.ch</string>
+</dict>
+</plist>

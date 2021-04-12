@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.chegva.iterm-command</string>
+	<key>connections</key>
+	<dict>
+		<key>09D4BCD8-54D2-469F-9ADB-1081245E15C1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56842990-7068-4466-A85E-C58CCF2D70DC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4B48F215-45D4-45EB-83A7-F328F7E5A861</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A12F122-5495-459C-B43D-8463DA347716</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>56842990-7068-4466-A85E-C58CCF2D70DC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3F283989-98F6-4BE9-86FF-EFD2FFA8E594</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6A12F122-5495-459C-B43D-8463DA347716</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BA5C526A-D20E-45BA-A280-92951F36B9DE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BA5C526A-D20E-45BA-A280-92951F36B9DE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8B3477FA-2570-404C-B737-7B309104D14B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EAF70008-9090-45A4-9034-7704324D2E90</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>09D4BCD8-54D2-469F-9ADB-1081245E15C1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>anzhihe</string>
+	<key>description</key>
+	<string>Execute command in new iterm session</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>iTerm Run Command</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>EAF70008-9090-45A4-9034-7704324D2E90</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Execute command in current iterm session
+exec osascript &lt;&lt;EOF
+
+  tell application "System Events"
+    -- some versions might identify as "iTerm2" instead of "iTerm"
+    set isRunning to (exists (processes where name is "iTerm")) or (exists (processes where name is "iTerm2"))
+  end tell
+  
+  tell application "iTerm"
+    activate
+    set hasNoWindows to ((count of windows) is 0)
+    if isRunning and hasNoWindows then
+      create window with default profile
+    end if
+    select first window
+    tell current session  of current window to write text "{query}"
+  end tell
+
+set query to "{query}"
+
+EOF
+
+echo ${query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>56842990-7068-4466-A85E-C58CCF2D70DC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>rc</string>
+				<key>subtext</key>
+				<string>Please use with caution, there are risks！</string>
+				<key>text</key>
+				<string>Execute command in current iterm session</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>09D4BCD8-54D2-469F-9ADB-1081245E15C1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>命令已在当前窗口执行！</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>3F283989-98F6-4BE9-86FF-EFD2FFA8E594</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Execute command in new iterm session
+exec osascript &lt;&lt;EOF
+
+  tell application "System Events"
+    -- some versions might identify as "iTerm2" instead of "iTerm"
+    set isRunning to (exists (processes where name is "iTerm")) or (exists (processes where name is "iTerm2"))
+  end tell
+  
+  tell application "iTerm"
+    activate
+    set hasNoWindows to ((count of windows) is 0)
+    if isRunning and hasNoWindows then
+      create window with default profile
+    end if
+    select first window
+    
+    tell the first window
+      if isRunning and hasNoWindows is false then
+        create tab with default profile
+      end if
+      tell current session to write text "{query}"
+	  end tell
+  end tell
+
+set query to "{query}"
+
+EOF
+
+echo ${query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>BA5C526A-D20E-45BA-A280-92951F36B9DE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>4B48F215-45D4-45EB-83A7-F328F7E5A861</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>rn</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Execute command in new iterm session</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6A12F122-5495-459C-B43D-8463DA347716</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>命令已在新窗口执行！</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>8B3477FA-2570-404C-B737-7B309104D14B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Alfred workflow to run command in iterm session.
+
+How to use
+Install the workflow and type one of the following keyword on Alfred:
+
+iTerm
+Usage：rc/rn [command]
+
+rc: execute command in current iterm session.carefully use, there are risks！
+rn: execute command in new iterm session</string>
+	<key>uidata</key>
+	<dict>
+		<key>09D4BCD8-54D2-469F-9ADB-1081245E15C1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>3F283989-98F6-4BE9-86FF-EFD2FFA8E594</key>
+		<dict>
+			<key>xpos</key>
+			<integer>680</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>4B48F215-45D4-45EB-83A7-F328F7E5A861</key>
+		<dict>
+			<key>xpos</key>
+			<integer>140</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>56842990-7068-4466-A85E-C58CCF2D70DC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>490</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>6A12F122-5495-459C-B43D-8463DA347716</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>8B3477FA-2570-404C-B737-7B309104D14B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>680</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>BA5C526A-D20E-45BA-A280-92951F36B9DE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>490</integer>
+			<key>ypos</key>
+			<integer>370</integer>
+		</dict>
+		<key>EAF70008-9090-45A4-9034-7704324D2E90</key>
+		<dict>
+			<key>xpos</key>
+			<integer>140</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string></string>
+	<key>webaddress</key>
+	<string>https://github.com/anzhihe/Efficient-office/tree/master/iterm-run-command</string>
+</dict>
+</plist>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Notable</name>
+  <version>1.0.1</version>
+  <bundle>com.ruddra.notable</bundle>
+  <updated>1594707635</updated>
+  <file>notable.alfredworkflow</file>
+</workflow>

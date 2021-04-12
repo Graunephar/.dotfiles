@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Placeholder Images</name>
+  <version>1.0.0</version>
+  <bundle>com.phantombox.placeholder-images</bundle>
+  <updated>1580665327</updated>
+  <file>placeholder_images.alfredworkflow</file>
+</workflow>

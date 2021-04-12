@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.vwap.googleaccountswitcher</string>
+	<key>connections</key>
+	<dict>
+		<key>06C7F319-08D7-4AD7-B2DE-2E155DC6C75B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>71BD9BE5-2D95-4012-A55D-7680B8A83B20</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>31BC27B9-E742-4BE0-B24F-0FA89E848BA3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C95B3F46-4C88-4918-9546-9EEC10434773</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A2F48AD7-CE38-434F-A38E-6398118FE03A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A753677E-7C5A-4A60-A686-36139E7484B5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A753677E-7C5A-4A60-A686-36139E7484B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A795205C-D284-41CA-BEAB-242F8DF5FB41</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A795205C-D284-41CA-BEAB-242F8DF5FB41</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>71BD9BE5-2D95-4012-A55D-7680B8A83B20</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AB08C74D-3E02-4F7D-8617-372C210F514C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>71BD9BE5-2D95-4012-A55D-7680B8A83B20</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C95B3F46-4C88-4918-9546-9EEC10434773</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>06C7F319-08D7-4AD7-B2DE-2E155DC6C75B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D46FD3F2-DBDA-452B-BABC-D3F4F73BF28D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D82FA7AE-589B-47C0-8856-5342AEAF0EF9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D82FA7AE-589B-47C0-8856-5342AEAF0EF9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AB08C74D-3E02-4F7D-8617-372C210F514C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>VWAP</string>
+	<key>description</key>
+	<string>Switch google accounts with keyboard shortcuts (Drive, Gmail, etc)</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Google Account Switcher - Alfred</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>// JavaScript for Automation (JXA) //
+
+const frontmost_app_name = Application('System Events').applicationProcesses.where({ frontmost: true }).name()[0]
+const frontmost_app = Application(frontmost_app_name)
+
+if (['Google Chrome', 'Google Chrome Canary', 'Chromium', 'Opera', 'Vivaldi', 'Brave Browser'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.windows[0].activeTab.url()
+} else if (['Safari', 'Safari Technology Preview', 'Webkit'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.documents[0].url()
+} else {
+  throw new Error('You need a supported browser as your frontmost app')
+}
+current_tab_url</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A753677E-7C5A-4A60-A686-36139E7484B5</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>A2F48AD7-CE38-434F-A38E-6398118FE03A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+query=`echo $query|tr -d '\040\011\012\015'`
+x=`echo $query | awk -F[/:] '{print $4}'`
+y=`echo https://$x`
+z=?authuser=$ACCOUNT_1
+echo $y$z</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A795205C-D284-41CA-BEAB-242F8DF5FB41</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+query=`echo $query|tr -d '\040\011\012\015'`
+x=`echo $query | awk -F[/:] '{print $4}'`
+y=`echo https://$x`
+z=?authuser=$ACCOUNT_2
+echo $y$z</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>06C7F319-08D7-4AD7-B2DE-2E155DC6C75B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>// JavaScript for Automation (JXA) //
+var args = $.NSProcessInfo.processInfo.arguments
+var new_url=$(args.objectAtIndex(args.count-1)).js
+console.log(new_url)
+const frontmost_app_name = Application('System Events').applicationProcesses.where({ frontmost: true }).name()[0]
+const frontmost_app = Application(frontmost_app_name)
+
+if (['Google Chrome', 'Google Chrome Canary', 'Chromium', 'Opera', 'Vivaldi', 'Brave Browser'].indexOf(frontmost_app_name) &gt; -1) {
+	frontmost_app.windows[0].activeTab.url=new_url
+} else if (['Safari', 'Safari Technology Preview', 'Webkit'].indexOf(frontmost_app_name) &gt; -1) {
+	frontmost_app.documents[0].url=new_url
+} else {
+  throw new Error('You need a supported browser as your frontmost app')
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>71BD9BE5-2D95-4012-A55D-7680B8A83B20</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>31BC27B9-E742-4BE0-B24F-0FA89E848BA3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>// JavaScript for Automation (JXA) //
+
+const frontmost_app_name = Application('System Events').applicationProcesses.where({ frontmost: true }).name()[0]
+const frontmost_app = Application(frontmost_app_name)
+
+if (['Google Chrome', 'Google Chrome Canary', 'Chromium', 'Opera', 'Vivaldi', 'Brave Browser'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.windows[0].activeTab.url()
+} else if (['Safari', 'Safari Technology Preview', 'Webkit'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.documents[0].url()
+} else {
+  throw new Error('You need a supported browser as your frontmost app')
+}
+current_tab_url</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C95B3F46-4C88-4918-9546-9EEC10434773</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+query=`echo $query|tr -d '\040\011\012\015'`
+x=`echo $query | awk -F[/:] '{print $4}'`
+y=`echo https://$x`
+z=?authuser=$ACCOUNT_3
+echo $y$z</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>AB08C74D-3E02-4F7D-8617-372C210F514C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>D46FD3F2-DBDA-452B-BABC-D3F4F73BF28D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>// JavaScript for Automation (JXA) //
+
+const frontmost_app_name = Application('System Events').applicationProcesses.where({ frontmost: true }).name()[0]
+const frontmost_app = Application(frontmost_app_name)
+
+if (['Google Chrome', 'Google Chrome Canary', 'Chromium', 'Opera', 'Vivaldi', 'Brave Browser'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.windows[0].activeTab.url()
+} else if (['Safari', 'Safari Technology Preview', 'Webkit'].indexOf(frontmost_app_name) &gt; -1) {
+  var current_tab_url = frontmost_app.documents[0].url()
+} else {
+  throw new Error('You need a supported browser as your frontmost app')
+}
+current_tab_url</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D82FA7AE-589B-47C0-8856-5342AEAF0EF9</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Switch google accounts in google apps (Drive, Gmail) with a simple keyboard shortcut. 
+
+- Supports Drive &amp; Gmail but may support other apps as well.
+- Supports switching between upto 3 Google accounts. 
+
+Supported Browsers
+- Safari
+- Google Chrome
+- Google Chrome Canary
+- Opera
+- Vivaldi
+- Brave Browser
+
+
+Setup the accounts:
+Setup the workflow environment variables like :
+- ACCOUNT_1 : myaccount1@gmail.com
+- ACCOUNT_2 : myaccount2@gmail.com
+- ACCOUNT_3 : myaccount2@gmail.com
+
+..and that's it. Use the keyboard shortcuts to switch between your google accounts on gmail &amp; drive.
+
+Note: 
+- You must be logged in with the aforementioned accounts already. Which of the 3 accounts you log into first does not matter.
+- Reach out if you need support for more accounts or other browsers or anything else - https://twitter.com/vinayw</string>
+	<key>uidata</key>
+	<dict>
+		<key>06C7F319-08D7-4AD7-B2DE-2E155DC6C75B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>450</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>31BC27B9-E742-4BE0-B24F-0FA89E848BA3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>90</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>71BD9BE5-2D95-4012-A55D-7680B8A83B20</key>
+		<dict>
+			<key>xpos</key>
+			<integer>695</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>A2F48AD7-CE38-434F-A38E-6398118FE03A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>90</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>A753677E-7C5A-4A60-A686-36139E7484B5</key>
+		<dict>
+			<key>note</key>
+			<string>Switch to Account 1</string>
+			<key>xpos</key>
+			<integer>265</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>A795205C-D284-41CA-BEAB-242F8DF5FB41</key>
+		<dict>
+			<key>xpos</key>
+			<integer>450</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>AB08C74D-3E02-4F7D-8617-372C210F514C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>455</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+		<key>C95B3F46-4C88-4918-9546-9EEC10434773</key>
+		<dict>
+			<key>note</key>
+			<string>Switch to Account 2</string>
+			<key>xpos</key>
+			<integer>265</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>D46FD3F2-DBDA-452B-BABC-D3F4F73BF28D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>95</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+		<key>D82FA7AE-589B-47C0-8856-5342AEAF0EF9</key>
+		<dict>
+			<key>note</key>
+			<string>Switch to Account 3</string>
+			<key>xpos</key>
+			<integer>265</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>ACCOUNT_1</key>
+		<string></string>
+		<key>ACCOUNT_2</key>
+		<string></string>
+		<key>ACCOUNT_3</key>
+		<string></string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>ACCOUNT_2</string>
+		<string>ACCOUNT_3</string>
+		<string>ACCOUNT_1</string>
+	</array>
+	<key>version</key>
+	<string>1.0.1</string>
+	<key>webaddress</key>
+	<string>https://twitter.com/vinayw</string>
+</dict>
+</plist>

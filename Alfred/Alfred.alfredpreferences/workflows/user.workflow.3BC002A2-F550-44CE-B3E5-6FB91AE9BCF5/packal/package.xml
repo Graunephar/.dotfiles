@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Gmails</name>
+  <version>1.0</version>
+  <bundle>com.coolie.gmails.alfredworkflow</bundle>
+  <updated>1612760873</updated>
+  <file>gmails.alfredworkflow</file>
+</workflow>

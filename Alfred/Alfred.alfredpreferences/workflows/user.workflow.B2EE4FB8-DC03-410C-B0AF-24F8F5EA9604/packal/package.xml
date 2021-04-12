@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>BluetoothDevicesToggler</name>
+  <version>1.0</version>
+  <bundle>com.omaririskic</bundle>
+  <updated>1586990529</updated>
+  <file>bluetoothdevicestoggler.alfredworkflow</file>
+</workflow>

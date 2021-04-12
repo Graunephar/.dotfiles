@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.coolie.gmails.alfredworkflow</string>
+	<key>connections</key>
+	<dict>
+		<key>ACC83A72-276B-4F3B-95E3-03FF411243D8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>10B494B5-E10F-40D1-988F-9F221FFA34D4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Escoolioinglesias</string>
+	<key>description</key>
+	<string>Access your gmail accounts.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Gmails</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Account Name","arg":"username@gmail.com"},{"title":"Account Name","arg":"username@gmail.com"},{"title":"Account Name","arg":"username@gmail.com"},{"title":"Account Name","arg":"username@gmail.com"},{"title":"Account Name","arg":"username@gmail.com","subtitle":""}]</string>
+				<key>keyword</key>
+				<string>gm</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Which account would you like to access?</string>
+				<key>title</key>
+				<string>Choose an Inbox</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>ACC83A72-276B-4F3B-95E3-03FF411243D8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://mail.google.com/mail/u/?authuser={query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>10B494B5-E10F-40D1-988F-9F221FFA34D4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>A very simple workflow to access multiple Gmail accounts quicker.
+
+Open the List Filter and replace the Titles with your account names.
+Then, replace the Args with your Gmail addresses.
+
+Feel free to add/delete as many accounts as you'd like!</string>
+	<key>uidata</key>
+	<dict>
+		<key>10B494B5-E10F-40D1-988F-9F221FFA34D4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>555</integer>
+			<key>ypos</key>
+			<integer>300</integer>
+		</dict>
+		<key>ACC83A72-276B-4F3B-95E3-03FF411243D8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>555</integer>
+			<key>ypos</key>
+			<integer>125</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://www.instagram.com/escoolioinglesias</string>
+</dict>
+</plist>

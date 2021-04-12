@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>LastPass Search</name>
+  <version>1.4.9</version>
+  <bundle>com.brummelhook.alfred.lastpass</bundle>
+  <updated>1596387846</updated>
+  <file>lastpass-search.alfredworkflow</file>
+</workflow>
