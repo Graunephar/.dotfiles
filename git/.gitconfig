@@ -58,6 +58,7 @@
 
 	#removes the last commit
 	uncommit = reset --soft HEAD^
+	uc = uncommit
 
 	rename = commit --amend
 	rn = rename
