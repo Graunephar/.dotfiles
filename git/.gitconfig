@@ -76,6 +76,18 @@
 	# Get the current branch name (not so useful in itself, but used in
 	# other aliases)
 
+	#When new stuff is added to a branch, we want to checkout that branch from the remote and discar our version
+	get-master = !git fetch && git checkout -B master origin/master
+	gm = get-master
+
+	get-develop = !git fetch && git checkout -B develop origin/develop
+	gd = get-develop
+
+	get-branch = "!f() { git fetch && git checkout -B $1 origin/$1; }; f"
+	gb = get-branch
+
+
+
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	
 	# Push the current branch to the remote "origin", and set it to track
