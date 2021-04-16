@@ -151,13 +151,13 @@
 
 
 
-             ;;DIsable  keys until new habit is learned
-             {:des "Disable arrows" :rules [
-                                            [:left_arrow :vk_none]
-                                            [:right_arrow :vk_none]
-                                            [:up_arrow :vk_none]
-                                            [:down_arrow :vk_none]
-              ]}
+             ;;;DIsable  keys until new habit is learned
+             ;{:des "Disable arrows" :rules [
+             ;                               [:left_arrow :vk_none]
+             ;                               [:right_arrow :vk_none]
+             ;                               [:up_arrow :vk_none]
+             ;                               [:down_arrow :vk_none]
+             ; ]}
 
              {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
              {:des "disable enter" :rules [[:return_or_enter :vk_none]]}
