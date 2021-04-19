@@ -1,14 +1,11 @@
 [user]
-	email = daniel@welcomebob.com
-	name = Graunephar
+	email = daniel@graungaard.com
+	name = Daniel Graungaard
 	signingKey = ""
 [push]
 	default = simple
 [credential]
 	helper = cache --timeout=95000
-[alias]
-	last = log -1 HEAD
-
 [color]
 	ui = true
 [push]
@@ -24,6 +21,25 @@
 	#editor = subl -n -w
 [alias]
 	cl = clone
+	b = branch
+	rb = rebase
+	st = status
+	p = push
+	a = add
+	d = diff
+	ds = diff --stat
+	dc = diff --cached
+	last = log -1 HEAD
+
+	ap = add -p
+	c = commit --verbose
+	ca = commit -a --verbose
+	cm = commit --verbose -m
+	cam = commit -a -m
+	m = commit --amend --verbose
+	rao = remote add origin
+
+
 	lg = log --all --graph --pretty=oneline --abbrev-commit --decorate
 	co = checkout
 	cob = co -b
@@ -32,26 +48,14 @@
 	say = "!f() { msg=${1-Hello World}; echo $msg;  }; f"
 	dangrevert = !bash -c 'source $HOME/.dotfiles/git/git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
 	acm = !git add . && git commit -m	
-	st = status
 	pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
 	com = commit -m
-	b = branch
-	rb = rebase
-	p = push
+	
 	home = checkout master
 	h = checkout master
 	s = status -s
-	d = diff
-	ds = diff --stat
-	dc = diff --cached
-	a = add
-	ap = add -p
-	c = commit --verbose
-	ca = commit -a --verbose
-	cm = commit --verbose -m
-	cam = commit -a -m
-	m = commit --amend --verbose
-	rao = remote add origin
+
+	
 	ac = !git add . && git commit -am
 	pushitgood = push -u origin --all
 	#fætsh = fetch
