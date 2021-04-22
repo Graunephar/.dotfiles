@@ -67,7 +67,7 @@ QR-Code v1.0
 Github: https://github.com/martinschilliger/alfred-qr-code
 Author: Martin Schilliger
 '''
-/usr/local/bin/qrencode -o tmp.png -s 20 {query}
+/opt/homebrew/bin/qrencode -o tmp.png -s 20 {query}
 /usr/bin/qlmanage -p tmp.png
 rm tmp.png</string>
 				<key>scriptargtype</key>
