@@ -11,6 +11,6 @@ alias gpp="git pull"
 eval "$(hub alias -s)" 
 
 #Aliasing lab from gitlab to be used with git command
-alias git=lab
+#alias git=lab
 
 

@@ -1,14 +1,11 @@
 [user]
-	email = graungaard@cs,au.dk
+	email = daniel@graungaard.com
 	name = Daniel Graungaard
 	signingKey = ""
 [push]
 	default = simple
 [credential]
 	helper = cache --timeout=95000
-[alias]
-	last = log -1 HEAD
-
 [color]
 	ui = true
 [push]
@@ -20,30 +17,20 @@
 [core]
 	autocrlf = input
 	editor = nano
+	excludesfile = /Users/danielgraungaard/.gitignore_global
 	#editor = subl -n -w
 [alias]
 	cl = clone
-	lg = log --all --graph --pretty=oneline --abbrev-commit --decorate
-	co = checkout
-	cob = co -b
-	cub = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
-	cup = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
-	say = "!f() { msg=${1-Hello World}; echo $msg;  }; f"
-	dangrevert = !bash -c 'source $HOME/.git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
-	acm = !git add . && git commit -m	
-	st = status
-	pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
-	com = commit -m
 	b = branch
 	rb = rebase
+	st = status
 	p = push
-	home = checkout master
-	h = checkout master
-	s = status -s
+	a = add
 	d = diff
 	ds = diff --stat
 	dc = diff --cached
-	a = add
+	last = log -1 HEAD
+
 	ap = add -p
 	c = commit --verbose
 	ca = commit -a --verbose
@@ -51,9 +38,31 @@
 	cam = commit -a -m
 	m = commit --amend --verbose
 	rao = remote add origin
+
+
+	lg = log --all --graph --pretty=oneline --abbrev-commit --decorate
+	co = checkout
+	cob = co -b
+	cub = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
+	cup = "!f() { git checkout -b $1 && git push --set-upstream origin $1; }; f"
+	say = "!f() { msg=${1-Hello World}; echo $msg;  }; f"
+	dangrevert = !bash -c 'source $HOME/.dotfiles/git/git_alias_functions.sh && gitrevertdangerous'#Moves head to last commit and force pushes! Asks beforehand
+	acm = !git add . && git commit -m	
+	pushup = "!git push --set-upstream origin $(git symbolic-ref --short HEAD)"
+	com = commit -m
+	
+	home = checkout master
+	h = checkout master
+	s = status -s
+
+	
 	ac = !git add . && git commit -am
 	pushitgood = push -u origin --all
 	#fætsh = fetch
+
+	#removes the last commit
+	uncommit = reset --soft HEAD^
+	uc = uncommit
 
 	rename = commit --amend
 	rn = rename
@@ -63,13 +72,26 @@
 	pb = pretty-branches
 	
 	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
-	fig = "!f() { source $HOME/.git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m $1 && echo "done"; }; f"
+	#Usage g fig "COMMIT MESSAGE HERE"
+	fig = "!f() { source $HOME/.dotfiles/git/git_alias_functions.sh && check_input $1 && echo 'Updating repo based on .gitignore' && git rm -r --cached . && git add . && git commit -m  \"$1\" && echo "done"; }; f"
 
 	# Working with branches
 	#
 
 	# Get the current branch name (not so useful in itself, but used in
 	# other aliases)
+
+	#When new stuff is added to a branch, we want to checkout that branch from the remote and discar our version
+	get-master = !git fetch && git checkout -B master origin/master
+	gm = get-master
+
+	get-develop = !git fetch && git checkout -B develop origin/develop
+	gd = get-develop
+
+	get-branch = "!f() { git fetch && git checkout -B $1 origin/$1; }; f"
+	gb = get-branch
+
+
 
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	
@@ -146,12 +168,16 @@
 
 
 
-
-
-
 [gpg]
 	program = gpg
 [commit]
 	gpgSign = false
+	template = /Users/danielgraungaard/.stCommitMsg
 [tag]
 	forceSignAnnotated = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
