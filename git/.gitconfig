@@ -105,11 +105,13 @@
 	#Deletes the branch by name and removes the local counterpart 	
 	#SHould be expanded with a check to see if variable is sent	
 	unpublish-all = "!f() { git checkout $1 && git unpublish && git home && git branch -D $1; }; f"
-	
 
 	#Checkout master and removes the branch the command was run from
 	remove-current-branch = "!oldbranch="$(git rev-parse --abbrev-ref HEAD)"  && git checkout master && git branch -D "${oldbranch}""
 	rmcb = remove-current-branch
+
+	remove-unpublish-current-branch = !unpublish && remove-current-branch
+	urmcb = remove-unpublish-current-branch
 
 	# Delete a branch and recreate it from master — useful if you have, say,
 	# a development branch and a master branch and they could conceivably go
