@@ -110,7 +110,7 @@
 	remove-current-branch = "!oldbranch="$(git rev-parse --abbrev-ref HEAD)"  && git checkout master && git branch -D "${oldbranch}""
 	rmcb = remove-current-branch
 
-	remove-unpublish-current-branch = !unpublish && remove-current-branch
+	remove-unpublish-current-branch = !git unpublish && git remove-current-branch
 	urmcb = remove-unpublish-current-branch
 
 	# Delete a branch and recreate it from master — useful if you have, say,
