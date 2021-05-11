@@ -15,7 +15,7 @@ function ask() {
 
 function gitrevertdangerous {
 
-ask 'Are you sure? (y/n) ' "Yy" && ask "This will force push to the repo. Deleting the last commit entirely. Are you completely sure? (y/n) " "Yy" && ask "Every collaborator might get problems from this. If you are not collaborating with a small team you should really find another option.  Do you want to abort? (y/n) " "nN" && git reset --soft HEAD^ && git push origin +master 
+ask 'Are you sure? (y/n) ' "Yy" && ask "This will force push to the repo. Deleting the last commit entirely. Are you completely sure? (y/n) " "Yy" && ask "Every collaborator might get problems from this. If you are not collaborating with a small team you should really find another option.  Do you want to abort? (y/n) " "nN" && git reset --soft HEAD^ && git push --force origin +master 
 
 }
 
