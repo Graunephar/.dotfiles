@@ -41,6 +41,8 @@ export PATH=~/.dotfiles/python:$PATH
 alias person="man"
 alias p="pwd"
 
+alias myip="ipconfig getifaddr en0"
+
 
 
 #Disable autocorrect
