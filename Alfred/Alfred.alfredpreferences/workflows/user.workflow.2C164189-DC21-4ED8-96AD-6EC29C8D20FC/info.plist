@@ -7182,6 +7182,27 @@ php -f ./src/action.php -- "$query" "TRACK" ""</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>{var:c_add_current_track_to}</string>
+				<key>subtext</key>
+				<string>Current track will be added to Your Music or a chosen playlist</string>
+				<key>text</key>
+				<string>Add current track to ...</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7FE5D993-C14D-4B94-9479-B361680F1C40</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argument</key>
 				<string></string>
 				<key>argumenttype</key>
@@ -7229,27 +7250,6 @@ php -f ./src/action.php -- "$query" "{query}" ""</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>{var:c_add_current_track_to}</string>
-				<key>subtext</key>
-				<string>Current track will be added to Your Music or a chosen playlist</string>
-				<key>text</key>
-				<string>Add current track to ...</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>7FE5D993-C14D-4B94-9479-B361680F1C40</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -7259,9 +7259,11 @@ php -f ./src/action.php -- "$query" "{query}" ""</string>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>0</integer>
+				<integer>42</integer>
 				<key>hotmod</key>
-				<integer>0</integer>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>'</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -11670,9 +11672,9 @@ https://github.com/vdesabou/alfred-spotify-mini-player</string>
 		<key>5BB099A1-224D-4702-BBBC-52919BDCCF62</key>
 		<dict>
 			<key>xpos</key>
-			<integer>100</integer>
+			<integer>105</integer>
 			<key>ypos</key>
-			<real>7910</real>
+			<integer>7890</integer>
 		</dict>
 		<key>5C3CE0F8-8476-487B-A896-81ABF7BE32E6</key>
 		<dict>
@@ -12060,9 +12062,9 @@ https://github.com/vdesabou/alfred-spotify-mini-player</string>
 		<key>7FE5D993-C14D-4B94-9479-B361680F1C40</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>355</integer>
 			<key>ypos</key>
-			<real>7810</real>
+			<integer>7680</integer>
 		</dict>
 		<key>7FF09231-F068-4EA0-8537-6C1EB608CA5A</key>
 		<dict>
@@ -13280,7 +13282,7 @@ Example: https://open.spotify.com/track/6hxgHNJjadmCHAJPXw6AYL</string>
 		<key>__always_display_lyrics_in_browser</key>
 		<string>0</string>
 		<key>__artwork_folder_size</key>
-		<string>36M</string>
+		<string>40M</string>
 		<key>__automatic_refresh_library_interval</key>
 		<string>0</string>
 		<key>__country_code</key>
@@ -13300,7 +13302,7 @@ Example: https://open.spotify.com/track/6hxgHNJjadmCHAJPXw6AYL</string>
 		<key>__is_public_playlists</key>
 		<string>0</string>
 		<key>__last_check_update_time</key>
-		<string>1621239324</string>
+		<string>1622643880</string>
 		<key>__max_results</key>
 		<string>50</string>
 		<key>__mopidy_port</key>

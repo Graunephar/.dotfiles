@@ -159,7 +159,7 @@
              ;                               [:down_arrow :vk_none]
              ; ]}
 
-             {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
-             {:des "disable enter" :rules [[:return_or_enter :vk_none]]}
+             ;{:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
+             ;{:des "disable enter" :rules [[:return_or_enter :vk_none]]}
 
              ]}

@@ -1,0 +1,35 @@
+panic: unable to open database file: operation not permitted
+
+goroutine 1 [running]:
+main.PanicOnErr(...)
+	github.com/sballin/alfred-search-notes-app/main.go:394
+main.main()
+	github.com/sballin/alfred-search-notes-app/main.go:407 +0x789
+panic: unable to open database file: operation not permitted
+
+goroutine 1 [running]:
+main.PanicOnErr(...)
+	github.com/sballin/alfred-search-notes-app/main.go:394
+main.main()
+	github.com/sballin/alfred-search-notes-app/main.go:407 +0x789
+panic: unable to open database file: operation not permitted
+
+goroutine 1 [running]:
+main.PanicOnErr(...)
+	github.com/sballin/alfred-search-notes-app/main.go:394
+main.main()
+	github.com/sballin/alfred-search-notes-app/main.go:407 +0x789
+panic: unable to open database file: operation not permitted
+
+goroutine 1 [running]:
+main.PanicOnErr(...)
+	github.com/sballin/alfred-search-notes-app/main.go:394
+main.main()
+	github.com/sballin/alfred-search-notes-app/main.go:407 +0x789
+panic: unable to open database file: operation not permitted
+
+goroutine 1 [running]:
+main.PanicOnErr(...)
+	github.com/sballin/alfred-search-notes-app/main.go:394
+main.main()
+	github.com/sballin/alfred-search-notes-app/main.go:407 +0x789
