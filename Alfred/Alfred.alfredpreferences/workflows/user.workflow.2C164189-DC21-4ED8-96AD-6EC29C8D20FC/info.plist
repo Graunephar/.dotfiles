@@ -13282,7 +13282,7 @@ Example: https://open.spotify.com/track/6hxgHNJjadmCHAJPXw6AYL</string>
 		<key>__always_display_lyrics_in_browser</key>
 		<string>0</string>
 		<key>__artwork_folder_size</key>
-		<string>40M</string>
+		<string>42M</string>
 		<key>__automatic_refresh_library_interval</key>
 		<string>0</string>
 		<key>__country_code</key>
@@ -13302,7 +13302,7 @@ Example: https://open.spotify.com/track/6hxgHNJjadmCHAJPXw6AYL</string>
 		<key>__is_public_playlists</key>
 		<string>0</string>
 		<key>__last_check_update_time</key>
-		<string>1622643880</string>
+		<string>1624962775</string>
 		<key>__max_results</key>
 		<string>50</string>
 		<key>__mopidy_port</key>

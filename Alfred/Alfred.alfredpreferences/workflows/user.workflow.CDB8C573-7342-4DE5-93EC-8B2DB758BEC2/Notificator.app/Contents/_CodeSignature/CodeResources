@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Scripts/notificator</key>
 		<data>
-		yzUpNfohlUQvMRd2orci/R4b/HQ=
+		cU2xOkGZVybloIK4yD1YqtqaEjY=
 		</data>
 		<key>Resources/applet.icns</key>
 		<data>
@@ -25,6 +25,10 @@
 	<dict>
 		<key>Resources/Scripts/main.scpt</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			AtimLpzp7Ge/z2Ri8LnHXUZ+QbQ=
+			</data>
 			<key>hash2</key>
 			<data>
 			aAL21b3nCt/l62yxZxogDHSTj1aDgCYu0Tb3EeawmMQ=
@@ -32,13 +36,21 @@
 		</dict>
 		<key>Resources/Scripts/notificator</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			cU2xOkGZVybloIK4yD1YqtqaEjY=
+			</data>
 			<key>hash2</key>
 			<data>
-			u27Emr2pn8xg77NgZDbom6e+5FKQNyDN7HC09vV6HRU=
+			kRrkT28j7pXOlNgCaABCcXeoH3mfmhnY1wQg+/d98a4=
 			</data>
 		</dict>
 		<key>Resources/applet.icns</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			+odfhVW3ovUWSrdNyUBrngHvqLg=
+			</data>
 			<key>hash2</key>
 			<data>
 			RPth7tC7fr/I/AryuhA2Xr85sMgm2aknjRKajHxNZXQ=
@@ -46,6 +58,10 @@
 		</dict>
 		<key>Resources/applet.rsrc</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			3Yai9jkA1Bo+epS8rZA7iAExr48=
+			</data>
 			<key>hash2</key>
 			<data>
 			v+pOH6nimYXB375krhPJDKP+n2vCH27ON/2gNS7hIyU=

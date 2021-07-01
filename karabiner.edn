@@ -8,6 +8,9 @@
 
 ;; TO have multiple option keys use one of them as the actual key, eg: !SCTleft_option
 
+
+; Modifier key list: https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org
+
 {
  :templates {:open        "open \"%s\""
              :open-finder "open %s"
@@ -96,6 +99,15 @@
                                                      [:!QWERSOs :!SOdown_arrow]
 
                                                      ]}
+
+
+
+
+             {:des "Launch iterm from " :rules [
+                                                                             [:non_us_backslash :!Enon_us_backslash]
+
+                                                                            [:!Snon_us_backslash :non_us_backslash]
+                                                                             ]}
 
 
 
