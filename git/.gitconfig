@@ -94,6 +94,9 @@
 
 
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
+
+
+	# CLEANUP:
 	
 	# Push the current branch to the remote "origin", and set it to track
 	# the upstream branch
@@ -105,6 +108,13 @@
 	#Deletes the branch by name and removes the local counterpart 	
 	#SHould be expanded with a check to see if variable is sent	
 	unpublish-all = "!f() { git checkout $1 && git unpublish && git home && git branch -D $1; }; f"
+
+	# delte all local branches which has been mgered into either main develop or master
+	delete-all-merged = "!git branch --merged | egrep -v '(^\\*|master|main|develop)' | xargs git branch -d"
+	dam = delete-all-merged
+
+
+
 
 	#Checkout master and removes the branch the command was run from
 	remove-current-branch = "!oldbranch="$(git rev-parse --abbrev-ref HEAD)"  && git checkout master && git branch -D "${oldbranch}""
@@ -169,6 +179,8 @@
 	
 	#Allow Empty commit (for forcing post-receive script to run on remote)
 	ecm = commit --allow-empty -m 
+
+
 
 
 
