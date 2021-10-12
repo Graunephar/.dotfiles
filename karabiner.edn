@@ -57,6 +57,11 @@
              {:des "Remap enter key to be closer" :rules [
                                                           [:!QWERSspacebar :return_or_enter]
                                                           ]}
+
+
+             {:des "Remap shift 7 to press actual US slash key &to use in shortcuts" :rules [
+                                                          [:!S7 :slash]
+                                                          ]}
              ;;TODO Decide which you actually use
 
 
