@@ -4,7 +4,7 @@
 
 
 
-;; If you need individual pkeypresses one after eacher other use list seperfation eg [:left_control :left_command :left_shift :left_option]
+;; If you need individual keypresses one after eacher other use list separation eg [:left_control :left_command :left_shift :left_option]
 
 ;; TO have multiple option keys use one of them as the actual key, eg: !SCTleft_option
 
@@ -12,171 +12,175 @@
 ; Modifier key list: https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org
 
 {
- :templates {:open        "open \"%s\""
-             :open-finder "open %s"
-             :alfred      "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflowafat \"%s\" with argument \"\"'"
-             :kb-maestro  "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
-             }
+ :templates    {:open        "open \"%s\""
+                :open-finder "open %s"
+                :alfred      "osascript -e 'tell application \"Alfred 4\" to run trigger \"%s\" in workflowafat \"%s\" with argument \"\"'"
+                :kb-maestro  "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
+                }
 
- :simlayers {:launch-mode {:key :a}
-             :alfred-mode {:key :z}
+ :simlayers    {:launch-mode {:key :a}
+                :alfred-mode {:key :z}
 
-             }
+                }
 
 
  ;;Get App  id by  -->: osascript -e 'id of app "Name of App"'
- :applications {:chrome ["^com\\.google\\.Chrome$"]
+ :applications {:chrome     ["^com\\.google\\.Chrome$"]
                 :superhuman ["^com\\.superhuman\\.electron$"]
+                :brave      ["^com\\.brave\\.Browser$"]
                 }
 
- :main      [
-             {:des "command b to backslash" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
-             ;;{:des "Ctrl w to command w" :rules [[:!Tw :!Cw]]} ;; TODO Should be changed so that it only works in chrome
-             {:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
+ :main         [
+                {:des "command b to backslash" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
+                ;;{:des "Ctrl w to command w" :rules [[:!Tw :!Cw]]} ;; TODO Should be changed so that it only works in chrome
+                {:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
 
 
-             {:des "Remap screenshot" :rules [[:!CTSs :!CS5]]}
+                {:des "Remap screenshot" :rules [[:!CTSs :!CS5]]}
 
 
-             ;:; I do not think I am ever going to use Nvivo again
-             ;;{:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
+                ;:; I do not think I am ever going to use Nvivo again
+                ;;{:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
 
 
-             {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
-              :rules [[:##caps_lock :!QWEright_shift nil {:alone :!QWERnon_us_backslash}]]} ;; TODO: SHould be something else than esc
+                {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
+                 :rules [[:##caps_lock :!QWEright_shift nil {:alone :!QWERnon_us_backslash}]]} ;; TODO: SHould be something else than esc
 
-             ;; Which means from now on !QWER means holding down caps_lock, so !QWERi = caps_lock + i
+                ;; Which means from now on !QWER means holding down caps_lock, so !QWERi = caps_lock + i
 
-             {:des "caps_lock space = delete" :rules [
-                                                      [:!QWERspacebar :delete_or_backspace]
-                                                      [:!QWEROspacebar :!Odelete_or_backspace]
-                                                      [:!QWERFspacebar :!Fdelete_or_backspace]
-                                                      [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
-                                                      ]}
+                {:des "caps_lock space = delete" :rules [
+                                                         [:!QWERspacebar :delete_or_backspace]
+                                                         [:!QWEROspacebar :!Odelete_or_backspace]
+                                                         [:!QWERFspacebar :!Fdelete_or_backspace]
+                                                         [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
+                                                         ]}
 
-             {:des "Remap enter key to be closer" :rules [
-                                                          [:!QWERSspacebar :return_or_enter]
-                                                          ]}
-
-
-             {:des "Remap shift 7 to press actual US slash key &to use in shortcuts" :rules [
-                                                          [:!S7 :slash]
-                                                          ]}
-             ;;TODO Decide which you actually use
-
-
-             {:des "caps_lock+ijkl & + wasd = arrows" :rules [
-
-                                                     [:!QWERj :left_arrow]
-                                                     [:!QWERl :right_arrow]
-                                                     [:!QWERi :up_arrow]
-                                                     [:!QWERk :down_arrow]
-                                                     [:!QWERSj :!Sleft_arrow]
-                                                     [:!QWERSl :!Sright_arrow]
-                                                     [:!QWERSi :!Sup_arrow]
-                                                     [:!QWERSk :!Sdown_arrow]
-
-                                                     [:!QWEROj :!Oleft_arrow]
-                                                     [:!QWEROl :!Oright_arrow]
-                                                     [:!QWEROi :!Oup_arrow]
-                                                     [:!QWEROk :!Odown_arrow]
-                                                     [:!QWERSOj :!SOleft_arrow]
-                                                     [:!QWERSOl :!SOright_arrow]
-                                                     [:!QWERSOi :!SOup_arrow]
-                                                     [:!QWERSOk :!SOdown_arrow]
-
-                                                     [:!QWERa :left_arrow]
-                                                     [:!QWERd :right_arrow]
-                                                     [:!QWERw :up_arrow]
-                                                     [:!QWERs :down_arrow]
-                                                     [:!QWERSa :!Sleft_arrow]
-                                                     [:!QWERSd :!Sright_arrow]
-                                                     [:!QWERSw :!Sup_arrow]
-                                                     [:!QWERSs :!Sdown_arrow]
-
-                                                     [:!QWEROa :!Oleft_arrow]
-                                                     [:!QWEROd :!Oright_arrow]
-                                                     [:!QWEROw :!Oup_arrow]
-                                                     [:!QWEROs :!Odown_arrow]
-                                                     [:!QWERSOa :!SOleft_arrow]
-                                                     [:!QWERSOd :!SOright_arrow]
-                                                     [:!QWERSOw :!SOup_arrow]
-                                                     [:!QWERSOs :!SOdown_arrow]
-
-                                                     ]}
+                {:des "Remap enter key to be closer" :rules [
+                                                             [:!QWERSspacebar :return_or_enter]
+                                                             ]}
 
 
 
+                ;; {:des "Remap shift 7 to press actual US slash key &to use in shortcuts only in brave" :rules [
+                ;;                                                                                              [:!S7 :slash :brave]
+                ;;                                                                                              [:slash :hyphen :brave]
+                ;;                ]}
 
-             {:des "Launch iterm from " :rules [
-                                                                             [:non_us_backslash :!Enon_us_backslash]
 
-                                                                            [:!Snon_us_backslash :non_us_backslash]
-                                                                             ]}
+
+                ;;TODO Decide which you actually use
+
+
+                {:des "caps_lock+ijkl & + wasd = arrows" :rules [
+
+                                                                 [:!QWERj :left_arrow]
+                                                                 [:!QWERl :right_arrow]
+                                                                 [:!QWERi :up_arrow]
+                                                                 [:!QWERk :down_arrow]
+                                                                 [:!QWERSj :!Sleft_arrow]
+                                                                 [:!QWERSl :!Sright_arrow]
+                                                                 [:!QWERSi :!Sup_arrow]
+                                                                 [:!QWERSk :!Sdown_arrow]
+
+                                                                 [:!QWEROj :!Oleft_arrow]
+                                                                 [:!QWEROl :!Oright_arrow]
+                                                                 [:!QWEROi :!Oup_arrow]
+                                                                 [:!QWEROk :!Odown_arrow]
+                                                                 [:!QWERSOj :!SOleft_arrow]
+                                                                 [:!QWERSOl :!SOright_arrow]
+                                                                 [:!QWERSOi :!SOup_arrow]
+                                                                 [:!QWERSOk :!SOdown_arrow]
+
+                                                                 [:!QWERa :left_arrow]
+                                                                 [:!QWERd :right_arrow]
+                                                                 [:!QWERw :up_arrow]
+                                                                 [:!QWERs :down_arrow]
+                                                                 [:!QWERSa :!Sleft_arrow]
+                                                                 [:!QWERSd :!Sright_arrow]
+                                                                 [:!QWERSw :!Sup_arrow]
+                                                                 [:!QWERSs :!Sdown_arrow]
+
+                                                                 [:!QWEROa :!Oleft_arrow]
+                                                                 [:!QWEROd :!Oright_arrow]
+                                                                 [:!QWEROw :!Oup_arrow]
+                                                                 [:!QWEROs :!Odown_arrow]
+                                                                 [:!QWERSOa :!SOleft_arrow]
+                                                                 [:!QWERSOd :!SOright_arrow]
+                                                                 [:!QWERSOw :!SOup_arrow]
+                                                                 [:!QWERSOs :!SOdown_arrow]
+
+                                                                 ]}
 
 
 
 
-             {:des "option/shift/FN and ijkl = arrows and mofifiers" :rules [
-                                                                             [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
-                                                                             [:!Ol :!Oright_arrow] ;; same
-                                                                             [:!Fl :end] ;; and with FN because I cant decide
-                                                                             [:!Fj :home] ;; same
-                                                                             [:!SOj :!SOleft_arrow]
-                                                                             [:!SOl :!SOright_arrow]
-                                                                             [:!SOi :!SOup_arrow]
-                                                                             [:!SOk :!SOdown_arrow]
-                                                                             [:!SFj :!Shome]
-                                                                             [:!SFl :!Send]
-                                                                             ]}
+                {:des "Launch iterm from " :rules [
+                                                   [:non_us_backslash :!Enon_us_backslash]
 
-
-             ;; Superhuman
-             ;{:des "Snippets in superhuman" :rules [[:!Ocomma :!Csemicolon [:chrome :superhuman]]]}
- ,
-
-             ;; LAUNCH
-
-
-             {:des   "Launch mode through pressing a:"
-              :rules [:launch-mode
-                      [:c [:kb-maestro "app: Chrome"]]
-                      [:s [:kb-maestro "app: Spotify"]]
-                      [:t [:kb-maestro "app: Toggl"]]
-                      [:f [:open-finder "~"]]
-                      [:d [:kb-maestro "app: Slack"]]
-                      [:o [:kb-maestro "app: Outlook"]]
-                      [:m [:kb-maestro "app: Superhuman"]]
-
-
-                      ]}
-
-
-             ;; ALFRED
-
-             {:des   "alfred mode"
-              :rules [:alfred-mode
-                      [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
-                      ]}
-
-             ;; KEYBOARD MAESTRO
-
-             {:des "Misc" :rules [
-                                  [:!Qv [:open "/Applications/Force Paste.app"]]
-                                  ]}
+                                                   [:!Snon_us_backslash :non_us_backslash]
+                                                   ]}
 
 
 
 
-             ;;;DIsable  keys until new habit is learned
-             ;{:des "Disable arrows" :rules [
-             ;                               [:left_arrow :vk_none]
-             ;                               [:right_arrow :vk_none]
-             ;                               [:up_arrow :vk_none]
-             ;                               [:down_arrow :vk_none]
-             ; ]}
+                {:des "option/shift/FN and ijkl = arrows and mofifiers" :rules [
+                                                                                [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
+                                                                                [:!Ol :!Oright_arrow] ;; same
+                                                                                [:!Fl :end] ;; and with FN because I cant decide
+                                                                                [:!Fj :home] ;; same
+                                                                                [:!SOj :!SOleft_arrow]
+                                                                                [:!SOl :!SOright_arrow]
+                                                                                [:!SOi :!SOup_arrow]
+                                                                                [:!SOk :!SOdown_arrow]
+                                                                                [:!SFj :!Shome]
+                                                                                [:!SFl :!Send]
+                                                                                ]}
 
-             ;{:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
-             ;{:des "disable enter" :rules [[:return_or_enter :vk_none]]}
 
-             ]}
+                ;; Superhuman
+                ;{:des "Snippets in superhuman" :rules [[:!Ocomma :!Csemicolon [:chrome :superhuman]]]},
+
+                ;; LAUNCH
+
+
+                {:des   "Launch mode through pressing a:"
+                 :rules [:launch-mode
+                         [:c [:kb-maestro "app: Chrome"]]
+                         [:s [:kb-maestro "app: Spotify"]]
+                         [:t [:kb-maestro "app: Toggl"]]
+                         [:f [:open-finder "~"]]
+                         [:d [:kb-maestro "app: Slack"]]
+                         [:o [:kb-maestro "app: Outlook"]]
+                         [:m [:kb-maestro "app: Superhuman"]]
+
+                         ]}
+
+
+                ;; ALFRED
+
+                {:des   "alfred mode"
+                 :rules [:alfred-mode
+                         [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
+                         ]}
+
+                ;; KEYBOARD MAESTRO
+
+                {:des "Misc" :rules [
+                                     [:!Qv [:open "/Applications/Force Paste.app"]]
+                                     ]}
+
+
+
+
+                ;;;DIsable  keys until new habit is learned
+                ;{:des "Disable arrows" :rules [
+                ;                               [:left_arrow :vk_none]
+                ;                               [:right_arrow :vk_none]
+                ;                               [:up_arrow :vk_none]
+                ;                               [:down_arrow :vk_none]
+                ; ]}
+
+                ;{:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
+                ;{:des "disable enter" :rules [[:return_or_enter :vk_none]]}
+
+                ]}

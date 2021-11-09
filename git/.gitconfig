@@ -169,6 +169,9 @@
 	# Checkout their version of a file and add it
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
+	#rebase ours use like g rours BRANCH_NAME
+	rours = rebase -Xours
+
 	# Delete any branches that have been merged into master
 	# See also: https://gist.github.com/robmiller/5133264
 	delete-merged-branches = "!git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
@@ -183,8 +186,21 @@
 
 
 
-
-
+[diff]
+tool = meld
+[difftool]
+prompt = false
+[difftool "meld"]
+trustExitCode = true
+  	cmd = ${HOME}/.dotfiles/git/_clean-meld-settings.sh && open -W -a Meld --args \"$([[ "$LOCAL" == /* ]] && echo "$LOCAL" || echo "$PWD/$LOCAL")\"  \"$([[ "$REMOTE" == /* ]] && echo "$REMOTE" || echo "$PWD/$REMOTE")\"
+[merge]
+tool = meld
+[mergetool]
+prompt = false
+	keepBackup = false
+[mergetool "meld"]
+trustExitCode = true
+cmd = open -W -a Meld --args --auto-merge "$PWD/$LOCAL" "$PWD/$BASE" "$PWD/$REMOTE" --output="$PWD/$MERGED"
 
 [gpg]
 	program = gpg
@@ -193,12 +209,14 @@
 	template = /Users/danielgraungaard/.stCommitMsg
 [tag]
 	forceSignAnnotated = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+
+#[difftool "sourcetree"]
+#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#	path = 
+#[mergetool "sourcetree"]
+#	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
+
 [pull]
 	#always rebase with pull, never merge
 	rebase = true 
