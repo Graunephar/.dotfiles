@@ -113,8 +113,12 @@
 	delete-all-merged = "!git branch --merged | egrep -v '(^\\*|master|main|develop)' | xargs git branch -d"
 	dam = delete-all-merged
 
+	# Removes all branches but the current one.
+	remove-all-local-branches = "!git branch | grep -v $(git get-name-of-current-branch) | xargs git branch -D "
+	ralb = remove-all-local-branches
 
-
+	## gets the name of current branch (used in other aliases to make them more readable/understandable)
+	get-name-of-current-branch = "!git rev-parse --abbrev-ref HEAD"
 
 	#Checkout master and removes the branch the command was run from
 	remove-current-branch = "!oldbranch="$(git rev-parse --abbrev-ref HEAD)"  && git checkout master && git branch -D "${oldbranch}""
@@ -184,6 +188,9 @@
 	ecm = commit --allow-empty -m 
 
 
+	changelog = git log master.. --pretty=format:"%s"	
+
+
 
 
 [diff]
@@ -220,3 +227,9 @@ cmd = open -W -a Meld --args --auto-merge "$PWD/$LOCAL" "$PWD/$BASE" "$PWD/$REMO
 [pull]
 	#always rebase with pull, never merge
 	rebase = true 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
