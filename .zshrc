@@ -109,6 +109,9 @@ export PATH=~/bin:$PATH
 #Android
 export PATH=$PATH:~/Library/Android/sdk/platform-tools/
 
+#the fuckm autocorrect
+eval $(thefuck --alias)
+
 
 #Grineren
 
