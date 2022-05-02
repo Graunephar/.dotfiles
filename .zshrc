@@ -11,8 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-plugins=(git firebase)
-
+plugins=(
+  git 
+  firebase
+  web-search
+  history
+)
 
 
 # Customize to your needs...
@@ -24,11 +28,14 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #PYTHON ENV fior pycharm
 export PATH="$PATH:/Users/au479136/Library/Python/2.7/bin"
 
-#Composer for laravel
+#Composer and sail for laravel
 #export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="/usr/local/opt/php@8.0/bin:$PATH"
 alias composer="php /usr/local/bin/composer"
 #export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 #export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+
 
 
 ####### CUSTOM STUFF (old bashrc) 
@@ -47,6 +54,8 @@ alias person="man"
 alias p="pwd"
 
 alias myip="ipconfig getifaddr en0"
+
+alias atom='open -a "Atom"'
 
 
 
