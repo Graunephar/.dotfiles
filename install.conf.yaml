@@ -1,0 +1,41 @@
+- defaults:
+    link:
+      relink: true
+
+- create:
+    - ~/.config
+
+- clean: ['~']
+
+#https://github.com/d12frosted/dotbot-brew
+- brew:
+    - git
+    - php
+    - cowsay
+    - thefuck
+    - zsh
+    - mackup
+    - wget
+    - lastpass-cli
+
+- cask: [iterm2]
+
+# install stuff through shell here
+- shell:
+    - cpan install Capture::Tiny # used by lastpass cli alfred integration: https://github.com/stuartcryan/lastpass-alfred-workflow
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
+    - curl -s "https://get.sdkman.io" | bash
+    - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
+    - git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions || true
+    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
+
+
+- link:
+    ~/.zshrc:
+      force: true
+      path: zshrc
+
+# Link stuff through shell here
+- shell:
+    - [sudo ln -sf ~/.dotfiles/karabiner.edn ~/.config/karabiner.edn] #unbfortunately karabiner confighuration file is in config which requires root
+
