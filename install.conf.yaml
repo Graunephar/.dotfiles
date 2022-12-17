@@ -20,6 +20,13 @@
     - lastpass-cli
     - touch-bar-simulator
     - highlight
+    - fzf
+    - bat
+    - ripgrep
+    - diff-so-fancy
+    - z
+    - autojump
+    - navi
 
 - cask: [iterm2]
 

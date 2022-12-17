@@ -151,9 +151,13 @@ plugins=(
   web-search
   history
   docker
+  docker-compose
+  docker-machine
+  dotenv
   command-not-found
   colored-man-pages
   npm
+  nvm
   pip
   pyenv
   python
@@ -161,7 +165,20 @@ plugins=(
   systemd
   zsh-syntax-highlighting
   zsh-autosuggestions
-  zsh-output-highlighting
+  colorize
+  fzf
+  gcloud
+  gem
+  iterm2
+  jira
+  lpass
+  screen
+  sublime
+  sublime-merge
+  sudo
+  vscode
+  z
+  zsh-interactive-cd
 )
 
 
