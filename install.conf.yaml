@@ -4,6 +4,7 @@
 
 - create:
     - ~/.config
+    - ~/Git
 
 - clean: ['~']
 
@@ -17,25 +18,31 @@
     - mackup
     - wget
     - lastpass-cli
+    - touch-bar-simulator
+    - highlight
 
 - cask: [iterm2]
 
 # install stuff through shell here
 - shell:
     - cpan install Capture::Tiny # used by lastpass cli alfred integration: https://github.com/stuartcryan/lastpass-alfred-workflow
-    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
     - curl -s "https://get.sdkman.io" | bash
-    - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
-    - git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions || true
-    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
-    - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# install oh my sh and plugins
+- shell:
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
+
 
 - link:
     ~/.zshrc:
-      force: true
-      path: zshrc
+        force: true
+        path: zshrc
+    ~/.p10k.zsh:
+        force: true
+        path: p10k.zsh
+    ~/.oh-my-zsh/custom: zsh/custom_folder #plugins and themes
+
 
 # Link stuff through shell here
 - shell:
     - [sudo ln -sf ~/.dotfiles/karabiner.edn ~/.config/karabiner.edn] #unbfortunately karabiner confighuration file is in config which requires root
-

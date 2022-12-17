@@ -155,7 +155,7 @@
                          [:d [:kb-maestro "app: Slack"]]
                          [:o [:kb-maestro "app: Outlook"]]
                          [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
-                         [:b [:kb-maestro "app: Arc"]] ;think B for Browser
+                         [:b [:kb-maestro "app: Arc"]]      ;think B for Browser
                          ]}
 
 
@@ -178,11 +178,11 @@
 
 
                 {:des "Disable Command Q in browser" :rules [
-                                                      [:!Cq :vk_none :brave]
-                                                      [:!Qq :vk_none :brave]
-                                                      [:!Cq :vk_none :arc]
-                                                      [:!Qq :vk_none :arc]
-                 ]}
+                                                             [:!Cq :vk_none :brave]
+                                                             [:!Qq :vk_none :brave]
+                                                             [:!Cq :vk_none :arc]
+                                                             [:!Qq :vk_none :arc]
+                                                             ]}
 
 
                 ;;;Disable  keys until new habits are learned
@@ -191,7 +191,7 @@
                 ;                               [:right_arrow :vk_none]
                 ;                               [:up_arrow :vk_none]
                 ;                               [:down_arrow :vk_none]
-                                               ]}
+                ;]}
 
 
                 {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}

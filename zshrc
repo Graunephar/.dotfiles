@@ -1,3 +1,19 @@
+#load custom python dir
+export PATH=~/.dotfiles/python:$PATH
+
+#Load a locale bin directory with all the local bin stuff
+export PATH=~/bin:$PATH
+
+# Brew
+export PATH=/opt/homebrew/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+#Lets start generate an ASCII picture of a cow with a quote I want to remember.
+cowsay $(quotecookie.py)
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,29 +23,6 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-plugins=(
-  git
-  firebase
-  web-search
-  history
-  docker
-  command-not-found
-  colored-man-pages
-  npm
-  pip
-  pyenv
-  python
-  sudo
-  systemd
-)
-
-#Autosuggestions
-#https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -52,15 +45,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 
-#Autosuggestions
-#https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-#ource ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Brew
-export PATH=/opt/homebrew/bin:$PATH
-
-#load custom python dir
-export PATH=~/.dotfiles/python:$PATH
 
 #Aliaser
 alias person="man"
@@ -93,8 +77,7 @@ function ask() {
 
 }
 
-#Load a locale bin directory with all the local bin stuff
-export PATH=~/bin:$PATH
+
 
 #Android
 export PATH=$PATH:~/Library/Android/sdk/platform-tools/
@@ -105,9 +88,6 @@ eval $(thefuck --alias)
 #Doing all the git related stuff
 source ~/.dotfiles/git/git_custom.sh
 
-#Grineren
-# NEXT: Lets generate an ASCII picture of a cow saying a random quote
-cowsay $(quotecookie.py)
 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -164,9 +144,30 @@ cowsay $(quotecookie.py)
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+
+plugins=(
+  git
+  firebase
+  web-search
+  history
+  docker
+  command-not-found
+  colored-man-pages
+  npm
+  pip
+  pyenv
+  python
+  sudo
+  systemd
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-output-highlighting
+)
+
+
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
