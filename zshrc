@@ -11,7 +11,7 @@ export PATH=/opt/homebrew/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 
 #Lets start generate an ASCII picture of a cow with a quote I want to remember.
-cowsay $(quotecookie.py)
+cowsay $(quotecookie.py)  | lolcat -p 2
 
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -178,7 +178,8 @@ plugins=(
   sudo
   vscode
   z
-  zsh-interactive-cd
+  auto-color-ls
+  # zsh-interactive-cd # use fzf for cd navigation
 )
 
 

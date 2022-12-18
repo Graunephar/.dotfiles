@@ -18,7 +18,6 @@
     - mackup
     - wget
     - lastpass-cli
-    - touch-bar-simulator
     - highlight
     - fzf
     - bat
@@ -27,6 +26,12 @@
     - z
     - autojump
     - navi
+    - lolcat
+    - sl
+    - figlet
+
+
+
 
 - cask: [iterm2]
 
@@ -38,7 +43,7 @@
 # install oh my sh and plugins
 - shell:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
-
+    #- [sudo gem install colorls]
 
 - link:
     ~/.zshrc:
