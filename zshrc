@@ -52,18 +52,6 @@ alias p="pwd"
 alias myip="ipconfig getifaddr en0"
 alias atom='open -a "Atom"'
 
-# update mkdir so we automatically steps into new directories
-function mkcd {
-  if [ ! -n "$1" ]; then
-    echo "Enter a directory name"
-  elif [ -d $1 ]; then
-    echo "\`$1' already exists"
-  else
-    mkdir "$1" && cd "$1"
-  fi
-}
-
-
 #Dangarous stuff, when you want it ask first
 function ask() {
 
@@ -178,7 +166,7 @@ plugins=(
   sudo
   vscode
   z
-  auto-color-ls
+  auto-color-ls # auto ls with color ls on cd
   # zsh-interactive-cd # use fzf for cd navigation
 )
 
@@ -222,3 +210,8 @@ if [ -f '/Users/danielgraungaard/.apps-and-alike/google-cloud-sdk/path.zsh.inc' 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/danielgraungaard/.apps-and-alike/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danielgraungaard/.apps-and-alike/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+#Override some system commands with custom commands. Done last not to interfere with behavior from terminal start up scripts
+source ~/.dotfiles/zsh/override_system_commands.sh
+
