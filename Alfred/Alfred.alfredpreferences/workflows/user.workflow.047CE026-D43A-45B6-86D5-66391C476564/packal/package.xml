@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>DarkOrLight</name>
-  <version>1.0</version>
-  <bundle>com.lisongcheng.daynight</bundle>
-  <updated>1556810652</updated>
-  <file>darkorlight.alfredworkflow</file>
-</workflow>

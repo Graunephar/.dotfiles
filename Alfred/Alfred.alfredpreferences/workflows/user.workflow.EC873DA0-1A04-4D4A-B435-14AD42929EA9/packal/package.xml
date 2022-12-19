@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Twilio Console to Twilio CLI</name>
-  <version>1.0.0</version>
-  <bundle>com.cpoissonnier.twilio-console-to-twilio-cli</bundle>
-  <updated>1603750413</updated>
-  <file>twilio_console_to_twilio_cli.alfredworkflow</file>
-</workflow>
