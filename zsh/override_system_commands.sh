@@ -23,6 +23,11 @@ function ls {
     fi
 }
 
+command_not_found_handler() {
+    echo $c[red] $c[bold]  "🤨️ Det forstod jeg ik' 🤷️: $@" $c[reset]
+    return 127
+}
+
 # Demo of how to pass variables when wriding my own functions in shell
 testfunctiondemo(){
    # t stores $1 argument passed to fresh()

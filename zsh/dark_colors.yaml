@@ -1,7 +1,7 @@
 # Main Colors
-unrecognized_file: gold
-recognized_file:   yellow
-executable_file:   lime
+unrecognized_file: darkslategray
+recognized_file:   white
+executable_file:   violet
 dir:               dodgerblue
 
 # Link

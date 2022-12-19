@@ -49,10 +49,10 @@
 - link:
     ~/.zshrc:
         force: true
-        path: zshrc
+        path: ./zsh/zshrc
     ~/.p10k.zsh:
         force: true
-        path: p10k.zsh
+        path: ./zsh/p10k.zsh
     ~/.oh-my-zsh/custom: zsh/custom_folder #plugins and themes
     ~/.config/colorls/dark_colors.yaml: zsh/dark_colors.yaml
 
