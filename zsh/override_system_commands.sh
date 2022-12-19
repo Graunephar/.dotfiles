@@ -24,7 +24,7 @@ function ls {
 }
 
 command_not_found_handler() {
-    echo $c[red] $c[bold]  "🤨️ Det forstod jeg ik' 🤷️: $@" $c[reset]
+    echo $c[red] $c[bold]  "🤷️: $@" $c[reset]
     return 127
 }
 
