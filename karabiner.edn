@@ -31,48 +31,28 @@
                 :superhuman ["^com\\.superhuman\\.electron$"]
                 :brave      ["^com\\.brave\\.Browser$"]
                 :arc        ["^company.thebrowser.Browser$"]
+                :finder     ["^com.apple.finder$"]
                 }
 
  :main         [
-                {:des "command b to backslash" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
+
+                ;; TOUCH BAR
                 ;;{:des "Ctrl w to command w" :rules [[:!Tw :!Cw]]} ;; TODO Should be changed so that it only works in chrome
                 {:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
 
 
-                {:des "Remap screenshot" :rules [[:!CTSs :!CS5]]}
+                ;;SYMBOLS
+
+                {:des "Place backlslash nicer" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
 
 
-                ;:; I do not think I am ever going to use Nvivo again
-                ;;{:des "For making new mapping in Nvivo" :rules [[:!QWERgrave_accent_and_tilde :!SC7]]}
-
+                ;;CAPS LOCK GOD MODE
 
                 {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
-                 :rules [[:##caps_lock :!QWEright_shift nil {:alone :!QWERnon_us_backslash}]]} ;; TODO: SHould be something else than esc
-
-                ;; Which means from now on !QWER means holding down caps_lock, so !QWERi = caps_lock + i
-
-                {:des "caps_lock space = delete" :rules [
-                                                         [:!QWERspacebar :delete_or_backspace]
-                                                         [:!QWEROspacebar :!Odelete_or_backspace]
-                                                         [:!QWERFspacebar :!Fdelete_or_backspace]
-                                                         [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
-                                                         ]}
-
-                {:des "Remap enter key to be closer" :rules [
-                                                             [:!QWERSspacebar :return_or_enter]
-                                                             ]}
+                 :rules [[:##caps_lock :!QWEright_shift nil {:alone :!QWERnon_us_backslash}]]} ;; TODO: SHould be something else than esc <-- What is this??
 
 
-
-                ;; {:des "Remap shift 7 to press actual US slash key &to use in shortcuts only in brave" :rules [
-                ;;                                                                                              [:!S7 :slash :brave]
-                ;;                                                                                              [:slash :hyphen :brave]
-                ;;                ]}
-
-
-
-                ;;TODO Decide which you actually use
-
+                ;; BASIC NAVIGATION
 
                 {:des "caps_lock+ijkl & + wasd = arrows" :rules [
 
@@ -115,18 +95,19 @@
                                                                  ]}
 
 
+                ;; Which means from now on !QWER means holding down caps_lock, so !QWERi = caps_lock + i
 
+                {:des "caps_lock space = delete" :rules [
+                                                         [:!QWERspacebar :delete_or_backspace]
+                                                         [:!QWEROspacebar :!Odelete_or_backspace] ; Caps lock + option is option + delete.
+                                                         [:!QWERFspacebar :!Fdelete_or_backspace] ; Caps lock + spacebar + FN is delete
+                                                         [:!QWERSspacebar :!Fdelete_or_backspace] ; Caps lock + spacebar + shift is also delete
+                                                         [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
+                                                         ]}
 
-                {:des "Launch iterm from " :rules [
-                                                   [:non_us_backslash :!Enon_us_backslash]
+                ;{:des "Remap enter key to be closer" :rules [[:!QWERtab :return_or_enter]]} // Hi future me looking to change this - for some reason this did not work. So it was handled in "Keyboard Meastro instead". Youc an find the key under the "System (Low level) folder
 
-                                                   [:!Snon_us_backslash :non_us_backslash]
-                                                   ]}
-
-
-
-
-                {:des "option/shift/FN and ijkl = arrows and mofifiers" :rules [
+                                {:des " option / shift/FN and ijkl = arrows and mofifiers " :rules [
                                                                                 [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
                                                                                 [:!Ol :!Oright_arrow] ;; same
                                                                                 [:!Fl :end] ;; and with FN because I cant decide
@@ -139,45 +120,54 @@
                                                                                 [:!SFl :!Send]
                                                                                 ]}
 
+                {:des " Use tab to enter folders in finder " :rules [[:tab :!Co :finder]]}
 
-                ;; Superhuman
-                ;{:des "Snippets in superhuman" :rules [[:!Ocomma :!Csemicolon [:chrome :superhuman]]]},
 
                 ;; LAUNCH
 
+                {:des " Launch iterm from " :rules [
+                                                   [:non_us_backslash :!Enon_us_backslash]
 
-                {:des   "Launch mode through pressing a:"
+                                                   [:!Snon_us_backslash :non_us_backslash]
+                                                   ]}
+
+
+                {:des " Remap screenshot " :rules [[:!CTSs :!CS5]]}
+
+
+
+                {:des   " Launch mode through pressing a: "
                  :rules [:launch-mode
-                         [:c [:kb-maestro "app: Chrome"]]
-                         [:s [:kb-maestro "app: Spotify"]]
-                         [:t [:kb-maestro "app: Toggl"]]
-                         [:f [:open-finder "~"]]
-                         [:d [:kb-maestro "app: Slack"]]
-                         [:o [:kb-maestro "app: Outlook"]]
-                         [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
-                         [:b [:kb-maestro "app: Arc"]]      ;think B for Browser
+                         [:c [:kb-maestro " app: Chrome "]]
+                         [:s [:kb-maestro " app: Spotify "]]
+                         [:t [:kb-maestro " app: Toggl "]]
+                         [:f [:open-finder " ~"]]
+                         [:d [:kb-maestro " app: Slack "]]
+                         [:o [:kb-maestro " app: Outlook "]]
+                         [:m [:kb-maestro " app: Superhuman "]] ; think M for Mail
+                         [:b [:kb-maestro " app: Arc "]]      ;think B for Browser
                          ]}
 
 
                 ;; ALFRED
 
-                {:des   "alfred mode"
+                {:des   " System mode "
                  :rules [:system-mode
-                         [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
-                         [:a [:kb-maestro "app: ActivityMonitor"]]
+                         [:x [:alfred " killProcess " " com.ngreenstein.alfred-process-killer "]]
+                         [:a [:kb-maestro " app: ActivityMonitor "]]
 
                          ]}
 
                 ;; KEYBOARD MAESTRO
 
-                {:des "Misc" :rules [
-                                     [:!Qv [:open "/Applications/Force Paste.app"]]
+                {:des " Misc " :rules [
+                                     [:!Qv [:open " /Applications/Force Paste.app "]]
                                      ]}
 
 
 
 
-                {:des "Disable Command Q in browser" :rules [
+                {:des " Disable Command Q in browser " :rules [
                                                              [:!Cq :vk_none :brave]
                                                              [:!Qq :vk_none :brave]
                                                              [:!Cq :vk_none :arc]
@@ -186,7 +176,7 @@
 
 
                 ;;;Disable  keys until new habits are learned
-                ;{:des "Disable arrows" :rules [
+                ;{:des " Disable arrows " :rules [
                 ;                               [:left_arrow :vk_none]
                 ;                               [:right_arrow :vk_none]
                 ;                               [:up_arrow :vk_none]
@@ -194,7 +184,16 @@
                 ;]}
 
 
-                {:des "disable backspace" :rules [[:delete_or_backspace :vk_none]]}
-                {:des "disable enter" :rules [[:return_or_enter :vk_none]]}
+                {:des " disable backspace " :rules [[:delete_or_backspace :vk_none]]}
+                {:des " disable enter " :rules [[:return_or_enter :vk_none]]}
 
                 ]}
+
+
+;; MISC
+
+;; {:des " Remap shift 7 to press actual US slash key &to use in shortcuts only in brave " :rules [
+;;                                                                                              [:!S7 :slash :brave]
+;;                                                                                              [:slash :hyphen :brave]
+;;                ]}
+

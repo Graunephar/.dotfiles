@@ -167,7 +167,6 @@ plugins=(
   colors # easy color change when echo https://github.com/zpm-zsh/colors
   vscode
   z
-  auto-color-ls # auto ls with color ls on cd
   # zsh-interactive-cd # use fzf for cd navigation
 )
 
