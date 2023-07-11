@@ -9,10 +9,10 @@
 #   fi
 # }
 
-# update mkdir so we automatically steps into new directories
-function mkdir {
-    command mkdir $1 && cd $_
-}
+## update mkdir so we automatically steps into new directories
+#function mkdir {
+#    command mkdir $1 && cd $_
+#}
 
 # use colorls for plain ls. Use plain ls for everything with arguments
 function ls {

@@ -17,7 +17,7 @@
 [core]
 	autocrlf = input
 	editor = nano
-	excludesfile = /Users/danielgraungaard/.gitignore_global
+	excludesfile = /Users/daniel/.gitignore_global
 	#editor = subl -n -w
 [alias]
 	cl = clone
@@ -213,7 +213,7 @@ cmd = open -W -a Meld --args --auto-merge "$PWD/$LOCAL" "$PWD/$BASE" "$PWD/$REMO
 	program = gpg
 [commit]
 	gpgSign = false
-	template = /Users/danielgraungaard/.stCommitMsg
+	template = /Users/daniel/.stCommitMsg
 [tag]
 	forceSignAnnotated = false
 

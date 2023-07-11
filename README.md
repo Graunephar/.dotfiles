@@ -10,8 +10,9 @@ I run a Oh My Zsh Terminal with a heavily customized version of the [powerlevel1
 
 ### System types
 
-At the moment most of the things are only used on macs. Although I have some branches that I have used in the past for specifik linux machines. That way changes can be merged to specifik machines. 
-However my long term plan is to include linux in the main branch. Making a setup where as much as possible can be synced between machines. 
+At the moment most of the things are only used on macs. Although I have some branches that I have used in the past for specifik linux machines. 
+That way changes can be merged to specific machines. 
+However my long term plan is to include linux in the main branch. Making a setup were as much as possible can be synced between machines. 
 
 The repo uses [dotbot](https://github.com/anishathalye/dotbot) to handle installation
 
