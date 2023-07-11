@@ -100,11 +100,16 @@
                                                          [:!QWERspacebar :delete_or_backspace]
                                                          [:!QWEROspacebar :!Odelete_or_backspace] ; Caps lock + option is option + delete.
                                                          [:!QWERFspacebar :!Fdelete_or_backspace] ; Caps lock + spacebar + FN is delete
-                                                         [:!QWERSspacebar :!Fdelete_or_backspace] ; Caps lock + spacebar + shift is also delete
                                                          [:!QWERCspacebar :!Cdelete_or_backspace] ;;In jetbrains line deletion = Command + backspace, this makes capslock + spacebar + command = command + backspace
                                                          ]}
 
-                ;{:des "Remap enter key to be closer" :rules [[:!QWERtab :return_or_enter]]} // Hi future me looking to change this - for some reason this did not work. So it was handled in Keyboard Meastro instead. You can find the key under the "System (Low level) folder
+
+                {:des "Remap enter key to be closer" :rules [
+                                                             [:!QWERSspacebar :return_or_enter]
+                                                             ]}
+
+                ;{:des "Remap enter key to be closer 2" :rules [[:!QWERtab :return_or_enter]]} // Hi future me looking to change this - for some
+                ; reason this did not work. So it was handled in Keyboard Meastro instead. You can find the key under the "System (Low level) folder
 
                                 {:des " option / shift/FN and ijkl = arrows and mofifiers " :rules [
                                                                                 [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
@@ -124,31 +129,34 @@
 
                 ;; LAUNCH
 
-                {:des " Launch iterm from " :rules [
+                {:des "Launch iterm from " :rules [
                                                    [:non_us_backslash :!Enon_us_backslash]
                                                    [:!Snon_us_backslash :non_us_backslash]
                                                    ]}
 
 
-                {:des " Remap screenshot " :rules [[:!CTSs :!CS5]]}
-
-
-                {:des " Remap screenshot " :rules [:!Eperiod [:kb-maestro " app: Toggl "]]}
-                {:des " Remap screenshot " :rules [:!Eperiod [:kb-maestro " app: Toggl "]]}
-
+                {:des "Remap screenshot " :rules [[:!CTSs :!CS5]]}
 
 
                 {:des   " Launch mode through pressing a: "
                  :rules [:launch-mode
-                         [:c [:kb-maestro " app: Chrome "]]
-                         [:s [:kb-maestro " app: Spotify "]]
-                         [:t [:kb-maestro " app: Toggl "]]
+                         [:c [:kb-maestro "app: Chrome"]]
+                         [:s [:kb-maestro "app: Spotify"]]
+                         [:t [:kb-maestro "app: Toggl"]]
                          [:f [:open-finder " ~"]]
-                         [:d [:kb-maestro " app: Slack "]]
-                         [:o [:kb-maestro " app: Outlook "]]
-                         [:m [:kb-maestro " app: Superhuman "]] ; think M for Mail
-                         [:b [:kb-maestro " app: Arc "]]      ;think B for Browser
+                         [:d [:kb-maestro "app: Slack"]]
+                         [:o [:kb-maestro "app: Outlook"]]
+                         [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
+                         [:b [:kb-maestro "app: Arc"]]      ;think B for Browser
                          ]}
+
+                {:des "Launch toggl" :rules [
+                                             [:!Eperiod [:kb-maestro "app: Toggl"]]
+                                             ]}
+
+                {:des "Remap enter key to be closer" :rules [
+                                                             [:!QWERSspacebar :return_or_enter]
+                                                             ]}
 
 
                 ;; ALFRED
@@ -156,19 +164,19 @@
                 {:des   " System mode "
                  :rules [:system-mode
                          [:x [:alfred " killProcess " " com.ngreenstein.alfred-process-killer "]]
-                         [:a [:kb-maestro " app: ActivityMonitor "]]
+                         [:a [:kb-maestro "app: ActivityMonitor"]]
 
                          ]}
 
                 ;; KEYBOARD MAESTRO
 
                 {:des " Misc " :rules [
-                                     [:!Qv [:open " /Applications/Force Paste.app "]]
+                                     [:!Qv [:open "/Applications/Force Paste.app "]]
                                      ]}
 
 
 
-$
+
                 {:des " Disable Command Q in browser " :rules [
                                                              [:!Cq :vk_none :brave]
                                                              [:!Qq :vk_none :brave]
