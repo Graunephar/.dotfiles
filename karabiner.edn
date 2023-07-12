@@ -45,6 +45,12 @@
 
                 {:des "Place backlslash nicer" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
 
+
+                {:des "Place dollar sign under option S" :rules [
+                                                                 [:!Es :non_us_backslash]
+                                                                 [:!Os :non_us_backslash]
+                                                                 ]}
+
                 ;;CAPS LOCK GOD MODE
 
                 {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
@@ -129,9 +135,11 @@
 
                 ;; LAUNCH
 
-                {:des "Launch iterm from " :rules [
-                                                   [:non_us_backslash :!Enon_us_backslash]
-                                                   [:!Snon_us_backslash :non_us_backslash]
+                {:des "Use $ as launcher for overlays" :rules [
+                                                   [:non_us_backslash :!Enon_us_backslash] ;; $ toggles iterm oerlay
+                                                   [:!Snon_us_backslash :!ERf2] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
+                                                   [:!Onon_us_backslash :!Ef2] ;; option $ toggles Bonsai browser (remember to map bonsai to option f2 for this to work)
+                                                   [:!Enon_us_backslash :!Ef2] ;; make bonsai also work with right option
                                                    ]}
 
 
@@ -184,10 +192,10 @@
                                                              [:!Qq :vk_none :arc]
                                                              ]}
 
-                ;;CHAT-GPT
-                {:des "Block Cmd+Shift+G in chatgpt"
-                 :rules [[:!CSg :vk_none]]
-                 :conditions [:chatgpt]}
+                ;;;CHAT-GPT
+                ;{:des "Block ChatGPT from using  Cmd+Shift+G"
+                ; :rules [[:!CSg :vk_none]]
+                ; :conditions [:chatgpt]}
 
 
                 ;; OLD disable key section
