@@ -65,3 +65,4 @@
 # End by running external setup tools
 - shell:
     - mackup restore -f
+    - crontab ./misc/cronjobs # puts the content of this file into cron jobs. crontab has this feature and then the system can handle the exact placement of the file

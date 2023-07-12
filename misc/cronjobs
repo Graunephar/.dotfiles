@@ -1,0 +1,4 @@
+#For anybody thinking they are editing the systems cronjob file. Please edit this file in .dotfiles/misc/cronjobs instead. Any changes not addedherewill be overwritten
+
+# Run mackup backup everyday at 12:00 (midday)
+0 12 * * * mackup backup -f
