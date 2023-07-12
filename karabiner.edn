@@ -32,13 +32,13 @@
                 :brave      ["^com\\.brave\\.Browser$"]
                 :arc        ["^company.thebrowser.Browser$"]
                 :finder     ["^com.apple.finder$"]
+                :chatgpt     ["^com.vincelwt.chatgptmac$"]
                 }
 
  :main         [
 
                 ;; TOUCH BAR
-                ;;{:des "Ctrl w to command w" :rules [[:!Tw :!Cw]]} ;; TODO Should be changed so that it only works in chrome
-                {:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
+                ;;{:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
 
 
                 ;;SYMBOLS
@@ -111,18 +111,18 @@
                 ;{:des "Remap enter key to be closer 2" :rules [[:!QWERtab :return_or_enter]]} // Hi future me looking to change this - for some
                 ; reason this did not work. So it was handled in Keyboard Meastro instead. You can find the key under the "System (Low level) folder
 
-                                {:des " option / shift/FN and ijkl = arrows and mofifiers " :rules [
-                                                                                [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
-                                                                                [:!Ol :!Oright_arrow] ;; same
-                                                                                [:!Fl :end] ;; and with FN because I cant decide
-                                                                                [:!Fj :home] ;; same
-                                                                                [:!SOj :!SOleft_arrow]
-                                                                                [:!SOl :!SOright_arrow]
-                                                                                [:!SOi :!SOup_arrow]
-                                                                                [:!SOk :!SOdown_arrow]
-                                                                                [:!SFj :!Shome]
-                                                                                [:!SFl :!Send]
-                                                                                ]}
+                {:des " option / shift/FN and ijkl = arrows and mofifiers " :rules [
+                                                                [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
+                                                                [:!Ol :!Oright_arrow] ;; same
+                                                                [:!Fl :end] ;; and with FN because I cant decide
+                                                                [:!Fj :home] ;; same
+                                                                [:!SOj :!SOleft_arrow]
+                                                                [:!SOl :!SOright_arrow]
+                                                                [:!SOi :!SOup_arrow]
+                                                                [:!SOk :!SOdown_arrow]
+                                                                [:!SFj :!Shome]
+                                                                [:!SFl :!Send]
+                                                                ]}
 
                 {:des " Use tab to enter folders in finder " :rules [[:tab :!Co :finder]]}
 
@@ -184,6 +184,13 @@
                                                              [:!Qq :vk_none :arc]
                                                              ]}
 
+                ;;CHAT-GPT
+                {:des "Block Cmd+Shift+G in chatgpt"
+                 :rules [[:!CSg :vk_none]]
+                 :conditions [:chatgpt]}
+
+
+                ;; OLD disable key section
 
                 ;;;Disable  keys until new habits are learned
                 ;{:des " Disable arrows " :rules [
