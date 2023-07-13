@@ -137,10 +137,12 @@
 
                 {:des "Use $ as launcher for overlays" :rules [
                                                    [:non_us_backslash :!Enon_us_backslash] ;; $ toggles iterm oerlay
-                                                   [:!Snon_us_backslash :!ERf2] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
+                                                   [:!Snon_us_backslash :!ERf2 [:kb-maestro "app: chatGPT"]] ;;shift + $ toggles chatGPT app, if you
+                                                   ;; use a custom version of
+                                                   ;; the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
                                                    [:!Onon_us_backslash :!Ef2] ;; option $ toggles Bonsai browser (remember to map bonsai to option f2 for this to work)
                                                    [:!Enon_us_backslash :!Ef2] ;; make bonsai also work with right option
-                                                   [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc Omnibar"]] ;;
+                                                   [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc "]] ;;
                                                    ]}
 
 
@@ -192,11 +194,6 @@
                                                              [:!Cq :vk_none :arc]
                                                              [:!Qq :vk_none :arc]
                                                              ]}
-
-                ;;;CHAT-GPT
-                ;{:des "Block ChatGPT from using  Cmd+Shift+G"
-                ; :rules [[:!CSg :vk_none]]
-                ; :conditions [:chatgpt]}
 
 
                 ;; OLD disable key section

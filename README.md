@@ -18,11 +18,20 @@ The repo uses [dotbot](https://github.com/anishathalye/dotbot) to handle install
 
 # Mac Setup
 
-I use Mackup and dotbot to tranfer settings between macs. At the moment Mackup backs up to an external file storage service. This is mainly because I am afraid that I will sync a password to github by mistake. 
+I use Mackup and dotbot to tranfer settings between macs. At the moment Mackup backs up to an external file storage service. This is mainly because I am afraid that I will sync some sensitive information to github by mistake. 
+
+Both keyboard Meastro and ALfred fuirthermore syncs their settings themselves to a third part file service. 
+
 
 ## Installation
 
+Make sure that th Mackup folder is located in the folder described in mackup.cfg (by asking the cloud provider to sync it to that folder)
+
 run ./install to install all the things on a mac 
+
+# manual setup
+Both Alfred and Keyboard Meastro is setup to sync there own settings manually (as a failsafe just to be sure. So set this sync up again)
+
 
 ## Core settings on mac
 
@@ -30,6 +39,7 @@ run ./install to install all the things on a mac
 - Keyboard Maestro
 - Karabiner (with Goku)
 - Better Touch Tool
+- Alfred settings including workflows.
 
 # Linux setup
 
