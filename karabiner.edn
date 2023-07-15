@@ -32,7 +32,7 @@
                 :brave      ["^com\\.brave\\.Browser$"]
                 :arc        ["^company.thebrowser.Browser$"]
                 :finder     ["^com.apple.finder$"]
-                :chatgpt     ["^com.vincelwt.chatgptmac$"]
+                :chatgpt    ["^com.vincelwt.chatgptmac$"]
                 }
 
  :main         [
@@ -118,97 +118,98 @@
                 ; reason this did not work. So it was handled in Keyboard Meastro instead. You can find the key under the "System (Low level) folder
 
                 {:des " option / shift/FN and ijkl = arrows and mofifiers " :rules [
-                                                                [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
-                                                                [:!Ol :!Oright_arrow] ;; same
-                                                                [:!Fl :end] ;; and with FN because I cant decide
-                                                                [:!Fj :home] ;; same
-                                                                [:!SOj :!SOleft_arrow]
-                                                                [:!SOl :!SOright_arrow]
-                                                                [:!SOi :!SOup_arrow]
-                                                                [:!SOk :!SOdown_arrow]
-                                                                [:!SFj :!Shome]
-                                                                [:!SFl :!Send]
-                                                                ]}
+                                                                                    [:!Oj :!Oleft_arrow] ;; without caps_lock for skipping words
+                                                                                    [:!Ol :!Oright_arrow] ;; same
+                                                                                    [:!Fl :end] ;; and with FN because I cant decide
+                                                                                    [:!Fj :home] ;; same
+                                                                                    [:!SOj :!SOleft_arrow]
+                                                                                    [:!SOl :!SOright_arrow]
+                                                                                    [:!SOi :!SOup_arrow]
+                                                                                    [:!SOk :!SOdown_arrow]
+                                                                                    [:!SFj :!Shome]
+                                                                                    [:!SFl :!Send]
+                                                                                    ]}
 
-                {:des " Use tab to enter folders in finder " :rules [[:tab :!Co :finder]]}
+                {:des "Use tab to enter folders in finder" :rules [[:tab :!Co :finder]]}
 
 
                 ;; LAUNCH
 
                 {:des "Use $ as launcher for overlays" :rules [
-                                                   [:non_us_backslash :!Enon_us_backslash] ;; $ toggles iterm oerlay
-                                                   [:!Snon_us_backslash :!ERf2 [:kb-maestro "app: chatGPT"]] ;;shift + $ toggles chatGPT app, if you
-                                                   ;; use a custom version of
-                                                   ;; the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
-                                                   [:!Onon_us_backslash :!Ef2] ;; option $ toggles Bonsai browser (remember to map bonsai to option f2 for this to work)
-                                                   [:!Enon_us_backslash :!Ef2] ;; make bonsai also work with right option
-                                                   [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc "]] ;;
-                                                   ]}
+                                                               [:non_us_backslash :!Enon_us_backslash] ;; $ toggles iterm oerlay
+                                                               [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
+                                                               [:!Snon_us_backslash [:kb-maestro "app: ChatGPT"]] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
+                                                               [:!Onon_us_backslash [:kb-maestro "app: Bonsai"]] ;; option $ toggles Bonsai browser (remember to map bonsai to option f2 for this to work)
+                                                               [:!Enon_us_backslash [:kb-maestro "app: Bonsai"]] ;; make bonsai also work with right option
+                                                               [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
+                                                               ]}
 
 
-                {:des "Remap screenshot " :rules [[:!CTSs :!CS5]]}
+                {:des "Toggl Toggle start stop timer with right option + ø" :rules [[:!Equote :!TSf3]]} ;;  (remember to map Toggl start stop function  to shift + control + f3
 
 
-                {:des   " Launch mode through pressing a: "
-                 :rules [:launch-mode
-                         [:c [:kb-maestro "app: Chrome"]]
-                         [:s [:kb-maestro "app: Spotify"]]
-                         [:t [:kb-maestro "app: Toggl"]]
-                         [:f [:open-finder " ~"]]
-                         [:d [:kb-maestro "app: Slack"]]
-                         [:o [:kb-maestro "app: Outlook"]]
-                         [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
-                         [:b [:kb-maestro "app: Arc"]]      ;think B for Browser
-                         ]}
-
-                {:des "Launch toggl" :rules [
-                                             [:!Eperiod [:kb-maestro "app: Toggl"]]
-                                             ]}
-
-                {:des "Remap enter key to be closer" :rules [
-                                                             [:!QWERSspacebar :return_or_enter]
-                                                             ]}
+                  {:des "Remap screenshot " :rules [[:!CTSs :!CS5]]}
 
 
-                ;; ALFRED
+                  {:des   " Launch mode through pressing a: "
+                   :rules [:launch-mode
+                           [:c [:kb-maestro "app: Chrome"]]
+                           [:s [:kb-maestro "app: Spotify"]]
+                           [:t [:kb-maestro "app: Toggl"]]
+                           [:f [:open-finder " ~"]]
+                           [:d [:kb-maestro "app: Slack"]]
+                           [:o [:kb-maestro "app: Outlook"]]
+                           [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
+                           [:b [:kb-maestro "app: Arc"]]    ;think B for Browser
+                           ]}
 
-                {:des   " System mode "
-                 :rules [:system-mode
-                         [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
-                         [:a [:kb-maestro "app: ActivityMonitor"]]
+                  {:des "Launch toggl" :rules [
+                                               [:!Eperiod [:kb-maestro "app: Toggl"]]
+                                               ]}
 
-                         ]}
-
-                ;; KEYBOARD MAESTRO
-
-                {:des " Misc " :rules [
-                                     [:!Qv [:open "/Applications/Force Paste.app "]]
-                                     ]}
+                  {:des "Remap enter key to be closer" :rules [
+                                                               [:!QWERSspacebar :return_or_enter]
+                                                               ]}
 
 
 
-
-                {:des " Disable Command Q in browser " :rules [
-                                                             [:!Cq :vk_none :brave]
-                                                             [:!Qq :vk_none :brave]
-                                                             [:!Cq :vk_none :arc]
-                                                             [:!Qq :vk_none :arc]
-                                                             ]}
-
-
-                ;; OLD disable key section
-
-                ;;;Disable  keys until new habits are learned
-                ;{:des " Disable arrows " :rules [
-                ;                               [:left_arrow :vk_none]
-                ;                               [:right_arrow :vk_none]
-                ;                               [:up_arrow :vk_none]
-                ;                               [:down_arrow :vk_none]
-                ;]}
+                  {:des " Disable Command Q in browser " :rules [
+                                                                 [:!Cq :vk_none :brave]
+                                                                 [:!Qq :vk_none :brave]
+                                                                 [:!Cq :vk_none :arc]
+                                                                 [:!Qq :vk_none :arc]
+                                                                 ]}
 
 
-                ;{:des " disable backspace " :rules [[:delete_or_backspace :vk_none]]}
-                ;{:des " disable enter " :rules [[:return_or_enter :vk_none]]}
+                  ;; SYSTEM
+
+                  {:des "Force paste" :rules [
+                                              [:!Qv [:kb-maestro "Force Paste"]]
+                                              ]}
+
+
+
+                  {:des   " System mode "
+                   :rules [:system-mode
+                           [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
+                           [:a [:kb-maestro "app: ActivityMonitor"]]
+
+                           ]}
+
+
+                  ;; OLD disable key section
+
+                  ;;;Disable  keys until new habits are learned
+                  ;{:des " Disable arrows " :rules [
+                  ;                               [:left_arrow :vk_none]
+                  ;                               [:right_arrow :vk_none]
+                  ;                               [:up_arrow :vk_none]
+                  ;                               [:down_arrow :vk_none]
+                  ;]}
+
+
+                  ;{:des " disable backspace " :rules [[:delete_or_backspace :vk_none]]}
+                  ;{:des " disable enter " :rules [[:return_or_enter :vk_none]]}
 
                 ]}
 

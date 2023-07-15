@@ -19,7 +19,7 @@ The repo uses [dotbot](https://github.com/anishathalye/dotbot) to handle install
 # Mac Setup
 
 I use Mackup and dotbot to tranfer settings between macs. At the moment Mackup backs up to an external file storage service. This is mainly because I am afraid that I will sync some sensitive information to github by mistake. 
-
+$
 Both keyboard Meastro and ALfred fuirthermore syncs their settings themselves to a third part file service. 
 
 

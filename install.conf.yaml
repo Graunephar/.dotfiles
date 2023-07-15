@@ -18,7 +18,8 @@
     - zsh
     - mackup
     - wget
-    - lastpass-cli
+    - bitwarden-cli
+    - ffmpeg
     - highlight
     - fzf
     - bat
