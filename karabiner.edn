@@ -54,7 +54,7 @@
                 ;;CAPS LOCK GOD MODE
 
                 {:des   "caps_lock to esc when pressed alone, to ctrl shift+option+command as modifier"
-                 :rules [[:##caps_lock :!QWEright_shift nil {:alone :!QWERnon_us_backslash}]]} ;; TODO: SHould be something else than esc <-- What is this??
+                 :rules [[:##caps_lock :!QWEright_shift nil {:alone :escape}]]} ;; TODO: could be something else than esc
 
 
                 ;; BASIC NAVIGATION
