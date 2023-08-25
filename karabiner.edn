@@ -11,6 +11,8 @@
 
 ; Modifier key list: https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org
 
+; List ofall keys: https://github.com/JoshuaManuel/Karabiner-Elements-Key-List
+
 {
  :templates    {:open        "open \"%s\""
                 :open-finder "open %s"
@@ -136,13 +138,12 @@
                 ;; LAUNCH
 
                 {:des "Use $ as launcher for overlays" :rules [
-                                                               [:non_us_backslash :!Enon_us_backslash] ;; $ toggles iterm oerlay
+                                                                [:non_us_backslash :japanese_eisuu] ;; $ toggles iterm ovrlay iterm set to :japanese_eisuu character for this to work
                                                                [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
                                                                [:!Snon_us_backslash [:kb-maestro "app: ChatGPT"]] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
-                                                               [:!Onon_us_backslash [:kb-maestro "app: Bonsai"]] ;; option $ toggles Bonsai browser (remember to map bonsai to option f2 for this to work)
-                                                               [:!Enon_us_backslash [:kb-maestro "app: Bonsai"]] ;; make bonsai also work with right option
+                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
                                                                [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
-                                                               ]}
+                                                                ]}
 
 
                 {:des "Toggl Toggle start stop timer with right option + ø" :rules [[:!Equote :!TSf3]]} ;;  (remember to map Toggl start stop function  to shift + control + f3
