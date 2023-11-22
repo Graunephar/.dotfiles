@@ -138,79 +138,79 @@
                 ;; LAUNCH
 
                 {:des "Use $ as launcher for overlays" :rules [
-                                                                [:non_us_backslash :japanese_eisuu] ;; $ toggles iterm ovrlay iterm set to :japanese_eisuu character for this to work
+                                                               [:non_us_backslash :japanese_eisuu] ;; $ toggles iterm ovrlay iterm set to :japanese_eisuu character for this to work
                                                                [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
                                                                [:!Snon_us_backslash [:kb-maestro "app: ChatGPT"]] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
                                                                ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
                                                                [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
-                                                                ]}
+                                                               ]}
 
 
                 {:des "Toggl Toggle start stop timer with right option + ø" :rules [[:!Equote :!TSf3]]} ;;  (remember to map Toggl start stop function  to shift + control + f3
 
 
-                  {:des "Remap screenshot " :rules [[:!CTSs :!CS5]]}
+                {:des "Remap screenshot " :rules [[:!CTSs :!CS5]]}
 
 
-                  {:des   " Launch mode through pressing a: "
-                   :rules [:launch-mode
-                           [:c [:kb-maestro "app: Chrome"]]
-                           [:s [:kb-maestro "app: Spotify"]]
-                           [:t [:kb-maestro "app: Toggl"]]
-                           [:f [:open-finder " ~"]]
-                           [:d [:kb-maestro "app: Slack"]]
-                           [:o [:kb-maestro "app: Outlook"]]
-                           [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
-                           [:b [:kb-maestro "app: Arc"]]    ;think B for Browser
-                           ]}
+                {:des   " Launch mode through pressing a: "
+                 :rules [:launch-mode
+                         [:s [:kb-maestro "app: Spotify"]]
+                         [:t [:kb-maestro "app: Toggl"]]
+                         [:f [:open-finder " ~"]]
+                         [:c [:kb-maestro "app: Slack"]]    ;think C for Communicator (will probably forget this in 5 minutes anyway lol)
+                         [:o [:kb-maestro "app: Outlook"]]
+                         [:m [:kb-maestro "app: Superhuman"]] ; think M for Mail
+                         [:b [:kb-maestro "app: Arc"]]      ;think B for Browser
+                         [:n [:kb-maestro "Activate Mini Arc"]] ;think N for new b Browser window
+                         ]}
 
-                  {:des "Launch toggl" :rules [
-                                               [:!Eperiod [:kb-maestro "app: Toggl"]]
-                                               ]}
+                {:des "Launch toggl" :rules [
+                                             [:!Eperiod [:kb-maestro "app: Toggl"]]
+                                             ]}
 
-                  {:des "Remap enter key to be closer" :rules [
-                                                               [:!QWERSspacebar :return_or_enter]
+                {:des "Remap enter key to be closer" :rules [
+                                                             [:!QWERSspacebar :return_or_enter]
+                                                             ]}
+
+
+
+                {:des " Disable Command Q in browser " :rules [
+                                                               [:!Cq :vk_none :brave]
+                                                               [:!Qq :vk_none :brave]
+                                                               [:!Cq :vk_none :arc]
+                                                               [:!Qq :vk_none :arc]
                                                                ]}
 
 
+                ;; SYSTEM
 
-                  {:des " Disable Command Q in browser " :rules [
-                                                                 [:!Cq :vk_none :brave]
-                                                                 [:!Qq :vk_none :brave]
-                                                                 [:!Cq :vk_none :arc]
-                                                                 [:!Qq :vk_none :arc]
-                                                                 ]}
-
-
-                  ;; SYSTEM
-
-                  {:des "Force paste" :rules [
-                                              [:!Qv [:kb-maestro "Force Paste"]]
-                                              ]}
+                {:des "Force paste" :rules [
+                                            [:!Qv [:kb-maestro "Force Paste"]]
+                                            ]}
 
 
 
-                  {:des   " System mode "
-                   :rules [:system-mode
-                           [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
-                           [:a [:kb-maestro "app: ActivityMonitor"]]
+                {:des   " System mode "
+                 :rules [:system-mode
+                         [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
+                         [:a [:kb-maestro "app: ActivityMonitor"]]
 
-                           ]}
-
-
-                  ;; OLD disable key section
-
-                  ;;;Disable  keys until new habits are learned
-                  ;{:des " Disable arrows " :rules [
-                  ;                               [:left_arrow :vk_none]
-                  ;                               [:right_arrow :vk_none]
-                  ;                               [:up_arrow :vk_none]
-                  ;                               [:down_arrow :vk_none]
-                  ;]}
+                         ]}
 
 
-                  ;{:des " disable backspace " :rules [[:delete_or_backspace :vk_none]]}
-                  ;{:des " disable enter " :rules [[:return_or_enter :vk_none]]}
+                ;; OLD disable key section
+
+                ;;;Disable  keys until new habits are learned
+                ;{:des " Disable arrows " :rules [
+                ;                               [:left_arrow :vk_none]
+                ;                               [:right_arrow :vk_none]
+                ;                               [:up_arrow :vk_none]
+                ;                               [:down_arrow :vk_none]
+                ;]}
+
+
+                ;{:des " disable backspace " :rules [[:delete_or_backspace :vk_none]]}
+                ;{:des " disable enter " :rules [[:return_or_enter :vk_none]]}
 
                 ]}
 
