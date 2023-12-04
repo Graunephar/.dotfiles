@@ -33,6 +33,8 @@
     - figlet
     - npm
     - yarn
+    - clipboard
+
 
 - cask: [iterm2]
 
