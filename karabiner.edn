@@ -43,6 +43,14 @@
                 ;;{:des "Map eject to weird shortcut aka touchbar in BTT" :rules [[:lang2 :!QWERnon_us_backslash]]}
 
 
+                ;;Specific websites/SLAs
+
+                {:des "Remap Cmd+X to Tab then Enter"
+                 :rules [[:!Cx [[:key :tab] [:key :return_or_enter]]]]}
+
+
+
+
                 ;;SYMBOLS
 
                 {:des "Place backlslash nicer" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
@@ -141,8 +149,8 @@
                                                                [:non_us_backslash :japanese_eisuu] ;; $ toggles iterm ovrlay iterm set to :japanese_eisuu character for this to work
                                                                [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
                                                                [:!Snon_us_backslash [:kb-maestro "app: ChatGPT"]] ;;shift + $ toggles chatGPT app, if you use a custom version of the app (https://github.com/Graunephar/chatgpt-mac) that only reacts to Option + Shift + F2, that I forked and built to get rid of the collision betwen this app and ALL OTHER THINGS
-                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
-                                                               [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
+                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
+                                                               [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
                                                                ]}
 
 
@@ -181,7 +189,7 @@
                                                                [:!Qq :vk_none :arc]
                                                                ]}
 
-
+
                 ;; SYSTEM
 
                 {:des "Force paste" :rules [

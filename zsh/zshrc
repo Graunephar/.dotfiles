@@ -208,6 +208,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#https://groups.google.com/g/iterm2-discuss/c/K6YazwKUvjQ
+set enable-bracketed-paste off
+
 
 
 # make the autocompletion sane by just ignoreing case and symbols

@@ -2,3 +2,4 @@
 
 # Run mackup backup everyday at 12:00 (midday)
 0 12 * * * mackup backup -f
+
