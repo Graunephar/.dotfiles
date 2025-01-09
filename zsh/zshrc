@@ -257,3 +257,19 @@ export NVM_DIR="$HOME/.nvm"
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /Users/daniel/Git/chatgpt-mac/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/daniel/Git/chatgpt-mac/node_modules/tabtab/.completions/electron-forge.zsh
+
+# Set Android SDK location (For react native)
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+
+# Flutter
+export PATH="$HOME/.apps-and-alike/flutter:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+
+
+#Platform io
+export PATH=$HOME/.platformio/penv/bin:$PATH
+#RiscV Support
+export PATH=/opt/homebrew/opt/riscv-tools/bin:$PATH
