@@ -273,3 +273,18 @@ export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:
 export PATH=$HOME/.platformio/penv/bin:$PATH
 #RiscV Support
 export PATH=/opt/homebrew/opt/riscv-tools/bin:$PATH
+
+# bun completions
+[ -s "/Users/daniel/.bun/_bun" ] && source "/Users/daniel/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$PATH:/Applications/microchip/xc8/v3.10/bin"
+
+#.net for Android
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
