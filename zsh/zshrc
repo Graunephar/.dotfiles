@@ -10,6 +10,10 @@ export PATH=/opt/homebrew/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Path to custom custom folder.
+export ZSH_CUSTOM="$HOME/.dotfiles/zsh/custom_folder"
+
+
 #Lets start generate an ASCII picture of a cow with a quote I want to remember.
 cowsay $(quotecookie.py)  | lolcat -p 2
 
@@ -126,6 +130,7 @@ source ~/.dotfiles/git/git_custom.sh
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -208,8 +213,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Disable zsh bracketed paste
 #https://groups.google.com/g/iterm2-discuss/c/K6YazwKUvjQ
-set enable-bracketed-paste off
+unset zle_bracketed_paste
 
 
 
@@ -288,3 +294,7 @@ export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
+
+
+#Bin files (specifically added for claude code in terminal)
+export PATH="$HOME/.local/bin:$PATH"
