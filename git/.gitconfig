@@ -67,9 +67,12 @@
 	rename = commit --amend
 	rn = rename
 
-	#Print all branches, including upstream info, in a pretty way	
+	#Print all branches, including upstream info, in a pretty way
 	pretty-branches = branch -vv
 	pb = pretty-branches
+
+	fast-forward-rebase = merge --ff-only
+	ffr = fast-forward-rebase
 	
 	#Fix IGnore!, after .gitignore has been updated, remove files not in .gitignore from the repo
 	#Usage g fig "COMMIT MESSAGE HERE"
