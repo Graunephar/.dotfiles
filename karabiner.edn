@@ -145,11 +145,11 @@
                 ;; LAUNCH
 
                 {:des "Use $ as launcher for overlays" :rules [
-                                                               [:non_us_backslash :japanese_kana :screensharing] ;; VNC focused: send a keycode the LOCAL iTerm ignores so it forwards; remote iTerm hotkey profile listens for japanese_kana (key code 104)
-                                                               [:non_us_backslash :japanese_eisuu :!screensharing] ;; $ toggles iterm ovrlay iterm set to :japanese_eisuu character for this to work
+                                                               [:non_us_backslash :vk_none :screensharing {:alone :japanese_kana}] ;; VNC focused: send a keycode the LOCAL iTerm ignores so it forwards; remote iTerm hotkey profile listens for japanese_kana (key code 104)
+                                                               [:non_us_backslash :vk_none :!screensharing {:alone :japanese_eisuu}] ;; $ toggles iterm overlay - fires single event on key release only, avoiding double-toggle from down+up
                                                                [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
-                                                               [:!Snon_us_backslash :!SOf2] ;;shift + $ toggles chatGPT app, by triggering Option + Shift + F2, BTT then listens for Option + Shift + F2, and handles the rest
-                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
+                                                               [:!Snon_us_backslash :!CTOSg] ;;shift + $ → hyper+g → BTT listens for this to trigger ChatGPT overlay
+                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
                                                                [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
                                                                ;[:!Tnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; control + $ MISSING
                                                                ;[:!Qnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; right_command + $ MISSING

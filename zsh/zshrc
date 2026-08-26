@@ -308,6 +308,8 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
 
 #Bin files (specifically added for claude code in terminal)
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+alias plaudy-sync="$HOME/plaudy-bridge/snapshot-and-push.sh"
 
 # Homebrew Ruby gem binaries (colorls, needed by the auto-color-ls plugin).
 # The `sudo gem install colorls` in install.conf.yaml can't work on modern macOS —
