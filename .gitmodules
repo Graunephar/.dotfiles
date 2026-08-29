@@ -5,3 +5,24 @@
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
+[submodule "zsh/custom_folder/themes/powerlevel10k"]
+	path = zsh/custom_folder/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule "zsh/custom_folder/plugins/zsh-autosuggestions"]
+	path = zsh/custom_folder/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/custom_folder/plugins/zsh-syntax-highlighting"]
+	path = zsh/custom_folder/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "zsh/custom_folder/plugins/zsh-completions"]
+	path = zsh/custom_folder/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/custom_folder/plugins/colors"]
+	path = zsh/custom_folder/plugins/colors
+	url = https://github.com/zpm-zsh/colors
+[submodule "zsh/custom_folder/plugins/auto-color-ls"]
+	path = zsh/custom_folder/plugins/auto-color-ls
+	url = https://github.com/vineyardbovines/auto-color-ls
+[submodule "zsh/custom_folder/plugins/firebase"]
+	path = zsh/custom_folder/plugins/firebase
+	url = https://github.com/Seqi/firebase-zsh

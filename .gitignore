@@ -287,3 +287,17 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,linux,macos,windows,clojure,intellij,intellij+iml,intellij+all
+# Claude Code working state — worktrees were accidentally committed as a
+# dangling gitlink, which errored on every clone and blocked `git submodule`.
+.claude/worktrees/
+.claude/sessions/
+.claude/projects/
+.claude/shell-snapshots/
+.claude/.credentials.json
+
+# Secrets — this repo is PUBLIC. Never commit env files or credentials.
+.env
+.env.*
+*.pem
+*.key
+.netrc

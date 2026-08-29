@@ -135,6 +135,7 @@ source ~/.dotfiles/git/git_custom.sh
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
 # Add wisely, as too many plugins slow down shell startup.
 
 
@@ -153,7 +154,6 @@ plugins=(
   history
   docker
   docker-compose
-  docker-machine
   dotenv
   command-not-found
   colored-man-pages
@@ -168,21 +168,23 @@ plugins=(
   zsh-autosuggestions
   colorize
   fzf
-  gcloud
   gem
   iterm2
-  jira
-  lpass
   screen
-  sublime
-  sublime-merge
-  sudo
   colors # easy color change when echo https://github.com/zpm-zsh/colors
   vscode
   z
-  auto-color-ls # auto ls with color ls on cd
+  auto-color-ls
   # zsh-interactive-cd # use fzf for cd navigation
 )
+
+# Machine-dependent plugins: only load the ones whose tool is actually installed.
+# Keeps this file shared across both Macs without loading dead completions,
+# and self-corrects when a tool is installed or removed.
+command -v gcloud >/dev/null 2>&1 && plugins+=(gcloud)
+command -v subl   >/dev/null 2>&1 && plugins+=(sublime)
+command -v smerge >/dev/null 2>&1 && plugins+=(sublime-merge)
+command -v jira   >/dev/null 2>&1 && plugins+=(jira)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -220,7 +222,9 @@ unset zle_bracketed_paste
 
 
 # make the autocompletion sane by just ignoreing case and symbols
-autoload -U compinit; compinit
+# NOTE: oh-my-zsh already runs compinit when sourced above. Calling it again here
+# rebuilt the completion dump a second time on every shell (~190ms, 29% of startup).
+# The zstyle below is all that's actually needed.
 zstyle ':completion:*' matcher-list \
     'm:{[:lower:]}={[:upper:]}' \
     '+r:|[._-]=* r:|=*' \
@@ -257,8 +261,14 @@ ZSH_PYENV_QUIET=true
 
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Find nvm wherever it lives: ~/.nvm (installer) or Homebrew's prefix.
+# MacBook uses the former, Mac Studio the latter — one shared file covers both.
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+if ! command -v nvm >/dev/null 2>&1 && [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -298,3 +308,10 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
 
 #Bin files (specifically added for claude code in terminal)
 export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew Ruby gem binaries (colorls, needed by the auto-color-ls plugin).
+# The `sudo gem install colorls` in install.conf.yaml can't work on modern macOS —
+# system Ruby is locked down — so colorls is installed against Homebrew's ruby instead.
+for _gembin in /opt/homebrew/lib/ruby/gems/*/bin(N); do PATH="$_gembin:$PATH"; done
+unset _gembin
+export PATH
