@@ -69,3 +69,18 @@
 - shell:
     - mackup restore -f
     - crontab ./misc/cronjobs # puts the content of this file into cron jobs. crontab has this feature and then the system can handle the exact placement of the file
+
+# --- VNC hotkey pass-through -------------------------------------------------
+# While the Screen Sharing window is focused, suspend the LOCAL BTT so Hyper
+# chords (Caps Lock+R etc.) forward into the remote session instead of being
+# eaten locally. No-op on a machine that is never a VNC client.
+- create:
+    - ~/Library/LaunchAgents
+
+- link:
+    ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist:
+        force: true
+        path: ./misc/dk.graunephar.vnc-passthrough.plist
+
+- shell:
+    - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist, "load vnc-passthrough agent"]
