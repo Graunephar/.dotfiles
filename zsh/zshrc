@@ -315,3 +315,11 @@ export PATH="$HOME/.local/bin:$PATH"
 for _gembin in /opt/homebrew/lib/ruby/gems/*/bin(N); do PATH="$_gembin:$PATH"; done
 unset _gembin
 export PATH
+
+# ---------------------------------------------------------------------------
+# Host-specific shell config. ~/.dotfiles-host is linked by ./install to
+# hosts/<LocalHostName>/, so this one shared line gives each machine its own
+# tail. Absent on an unconfigured machine - guarded, so nothing breaks.
+# See hosts/README.md.
+# ---------------------------------------------------------------------------
+[[ -f ~/.dotfiles-host/zshrc.local ]] && source ~/.dotfiles-host/zshrc.local

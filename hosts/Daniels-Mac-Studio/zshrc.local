@@ -1,0 +1,8 @@
+# Shell config specific to the Mac Studio.
+#
+# Sourced at the end of the shared zshrc via ~/.dotfiles-host/zshrc.local.
+# Deliberately near-empty: this machine is the lean AI work engine, and
+# anything both Macs want belongs in the shared zshrc instead.
+
+# Machine identity, handy in prompts and scripts.
+export DOTFILES_HOST="mac-studio"

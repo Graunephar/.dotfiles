@@ -1,0 +1,24 @@
+# Host profile: Mac Studio (M4 Max) - the AI work engine.
+#
+# Applied by ./install AFTER install.conf.yaml, on top of the shared config.
+# Keep this file SMALL. Default to putting things in the shared config; only
+# use a host profile when something costs shell-startup time, runs a daemon,
+# or is genuinely broken on the other machine.
+
+- create:
+    - ~/.dotfiles-host
+
+- link:
+    # Points ~/.dotfiles-host at this machine's directory. The shared zshrc
+    # sources ~/.dotfiles-host/zshrc.local, so each machine picks up its own
+    # shell config from one shared line.
+    ~/.dotfiles-host:
+        force: true
+        path: hosts/Daniels-Mac-Studio
+
+# Studio-only packages go here. Empty for now - everything installed so far
+# belongs in the shared list because both machines want it.
+# - brew:
+#     - some-studio-only-tool
+# - cask:
+#     - some-studio-only-app

@@ -10,7 +10,36 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
 
-#"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"
+# Init ALL submodules, not only dotbot. The powerlevel10k theme and the zsh
+# plugins under zsh/custom_folder are submodules too - without this a fresh
+# clone gets empty directories and a shell with no theme and no plugins.
+git submodule update --init --recursive
+
+DOTBOT="${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}"
+
+# --------------------------------------------------------------------------
+# 1. Shared config - everything every machine gets.
+# --------------------------------------------------------------------------
+echo "==> Applying shared config (${CONFIG})"
+"${DOTBOT}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"
+
+# --------------------------------------------------------------------------
+# 2. Host profile - only what THIS machine needs, applied on top.
+#
+# To add a machine, create hosts/<LocalHostName>.conf.yaml and optionally
+# hosts/<LocalHostName>/zshrc.local. Find the name with:
+#     scutil --get LocalHostName
+# An unknown machine just gets the shared config; nothing breaks.
+# See hosts/README.md.
+# --------------------------------------------------------------------------
+HOST="$(scutil --get LocalHostName 2>/dev/null || hostname -s)"
+HOST_CONFIG="hosts/${HOST}.conf.yaml"
+
+if [ -f "${BASEDIR}/${HOST_CONFIG}" ]; then
+  echo "==> Applying host profile for '${HOST}' (${HOST_CONFIG})"
+  "${DOTBOT}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${HOST_CONFIG}" "${@}"
+else
+  echo "==> No host profile for '${HOST}' - shared config only."
+  echo "    To add one, create ${HOST_CONFIG} (see hosts/README.md)."
+fi
