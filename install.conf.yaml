@@ -34,19 +34,19 @@
     - npm
     - yarn
     - clipboard
+    - ruby # needed for colorls — system Ruby is locked down on modern macOS
 
 
 - cask: [iterm2]
 
 # install stuff through shell here
 - shell:
-    - cpan install Capture::Tiny # used by lastpass cli alfred integration: https://github.com/stuartcryan/lastpass-alfred-workflow
     - curl -s "https://get.sdkman.io" | bash
 
 # install oh my sh and plugins
 - shell:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
-    - sudo gem install colorls
+    - "$(brew --prefix ruby)/bin/gem install colorls --no-document" # NOT `sudo gem install`: system Ruby (2.6) is locked down on modern macOS, that command fails and aborts the whole install because of `set -e`
 
 - link:
     ~/.zshrc:
@@ -63,12 +63,12 @@
 
 # Link stuff through shell here
 - shell:
-    - [sudo ln -sf ~/.dotfiles/karabiner.edn ~/.config/karabiner.edn] #unbfortunately karabiner confighuration file is in config which requires root
+    - [mkdir -p ~/.config && ln -sf ~/.dotfiles/karabiner.edn ~/.config/karabiner.edn] # no sudo: ~/.config is owned by you. The old `sudo` made a root-owned symlink for no reason.
 
 # End by running external setup tools
 - shell:
     - mackup restore -f
-    - crontab ./misc/cronjobs # puts the content of this file into cron jobs. crontab has this feature and then the system can handle the exact placement of the file
+    - ./misc/install-crontab.sh # merges misc/cronjobs into the crontab. Does NOT replace it — `crontab <file>` would wipe every job not in that file.
 
 # --- VNC hotkey pass-through -------------------------------------------------
 # While the Screen Sharing window is focused, suspend the LOCAL BTT so Hyper

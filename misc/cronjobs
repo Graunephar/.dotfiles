@@ -1,4 +1,7 @@
-#For anybody thinking they are editing the systems cronjob file. Please edit this file in .dotfiles/misc/cronjobs instead. Any changes not addedherewill be overwritten
-
-# Run mackup backup everyday at 12:00 (midday)
+# Managed by .dotfiles — edit this file, not `crontab -e`.
+# Everything between the BEGIN/END markers is replaced on each ./install run.
+# Any cron jobs you add outside these markers are preserved.
+# BEGIN dotfiles-managed
+# Run mackup backup every day at 12:00 (midday)
 0 12 * * * mackup backup -f
+# END dotfiles-managed
