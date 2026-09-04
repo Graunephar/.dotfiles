@@ -58,6 +58,10 @@
     ~/.oh-my-zsh/custom: zsh/custom_folder #plugins and themes
     ~/.config/colorls/dark_colors.yaml: zsh/dark_colors.yaml
     ~/.mackup.cfg: ./mackup.cfg
+    # Custom mackup app definitions. These override mackup's stock ones.
+    # bettertouchtool.cfg fixes a definition that has been silently broken for
+    # years - see the comments in that file.
+    ~/.mackup/bettertouchtool.cfg: ./mackup/bettertouchtool.cfg
 
 
 
