@@ -74,6 +74,9 @@
     # bettertouchtool.cfg fixes a definition that has been silently broken for
     # years - see the comments in that file.
     ~/.mackup/bettertouchtool.cfg: ./mackup/bettertouchtool.cfg
+    ~/.local/bin/fkill:
+        create: true
+        path: ./scripts/fkill.command
 
 
 
@@ -98,10 +101,11 @@
 - create:
     - ~/Library/LaunchAgents
 
-- link:
-    ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist:
-        force: true
-        path: ./misc/dk.graunephar.vnc-passthrough.plist
+# NOT a dotbot link: launchd refuses to bootstrap a symlinked plist
+# ("Bootstrap failed: 5: Input/output error"). It has to be a real file, so
+# re-run ./install after editing misc/dk.graunephar.vnc-passthrough.plist.
+- shell:
+    - [cp -f ./misc/dk.graunephar.vnc-passthrough.plist ~/Library/LaunchAgents/, "copy vnc-passthrough agent"]
 
 - shell:
     - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist, "load vnc-passthrough agent"]
