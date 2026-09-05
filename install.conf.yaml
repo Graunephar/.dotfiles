@@ -46,6 +46,16 @@
 # install oh my sh and plugins
 - shell:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true #install Oh My Zsh! - || true ignores the error the script will make if its already installed
+    - |
+      # MesloLGS NF - the font powerlevel10k and the iTerm profiles expect.
+      # NOT the same as the `font-meslo-lg-nerd-font` cask, which installs
+      # "MesloLGS Nerd Font" - a different PostScript name that the profiles
+      # do not match, so iTerm silently falls back and p10k icons break.
+      cd ~/Library/Fonts && for f in Regular Bold Italic "Bold Italic"; do
+        [ -f "MesloLGS NF $f.ttf" ] || curl -fsSL \
+          "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20${f// /%20}.ttf" \
+          -o "MesloLGS NF $f.ttf"
+      done
     - "$(brew --prefix ruby)/bin/gem install colorls --no-document" # NOT `sudo gem install`: system Ruby (2.6) is locked down on modern macOS, that command fails and aborts the whole install because of `set -e`
 
 - link:
@@ -85,6 +95,10 @@
     ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist:
         force: true
         path: ./misc/dk.graunephar.vnc-passthrough.plist
+    ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist:
+        force: true
+        path: ./misc/dk.graunephar.mackup-backup.plist
 
 - shell:
     - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist, "load vnc-passthrough agent"]
+    - [launchctl bootout "gui/$(id -u)/dk.graunephar.mackup-backup" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist, "load mackup-backup agent"]

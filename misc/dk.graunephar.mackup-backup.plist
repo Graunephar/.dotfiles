@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>dk.graunephar.mackup-backup</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>/Users/daniel/.dotfiles/misc/mackup-backup.sh</string>
+    </array>
+
+    <!-- Every 3 hours (10800s). launchd also runs a missed job once the Mac
+         wakes, which cron does not - the old cron job simply skipped any day
+         the machine happened to be asleep at noon. -->
+    <key>StartInterval</key>
+    <integer>10800</integer>
+
+    <!-- Don't fire at login: several apps are still starting and would be
+         captured mid-write. First run comes 3 hours in. -->
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/tmp/mackup-backup.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/mackup-backup.err</string>
+</dict>
+</plist>

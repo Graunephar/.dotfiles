@@ -60,7 +60,7 @@ finding out months on that your two Macs disagree is not.
 | Host name (`LocalHostName`) | Machine | Role |
 |---|---|---|
 | `Daniels-Mac-Studio` | Mac Studio, M4 Max, 36 GB | AI work engine. Kept lean. |
-| _not yet added_ | MacBook | Everyday machine, full setup |
+| `Daniels-MacBook-Pro-2` | MacBook Pro | Everyday machine, full setup. Profile not created yet. |
 
 To add the MacBook, run `scutil --get LocalHostName` on it and follow
 "Adding a machine" above.
