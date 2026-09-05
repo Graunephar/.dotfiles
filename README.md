@@ -12,6 +12,21 @@ Note that MesloLGS NF is not the same as the `font-meslo-lg-nerd-font` cask. Tha
 
 The repo uses [dotbot](https://github.com/anishathalye/dotbot) to handle installation
 
+### How it all fits together
+
+Two things carry my config between machines, and they hold different stuff:
+
+**This git repo** — shell config, karabiner.edn, git config, scripts, the install itself. It's public, so nothing sensitive goes in it. `./install` links it all into place with dotbot.
+
+**Proton Drive** — the app settings that can't live in a public repo: iTerm, Keyboard Maestro, BetterTouchTool and so on. Mackup copies them in and out of `~/Library/CloudStorage/ProtonDrive-…/Sync/Mackup`. It used to be pCloud, and sync.com before that, which is why the old `mackup.cfg` pointed at a `Sync/` folder that hadn't existed for years.
+
+So: **repo for anything I'd show people, Proton for everything else.** Proton also has to be installed and signed in before `./install` is worth running, or mackup has nothing to read.
+
+On top of that, two rules keep the two macs from fighting:
+
+- **Host profiles** decide what each machine installs — see below.
+- **Only the MacBook writes to Proton.** The Studio reads. Mackup has no conflict resolution, so two writers means silent data loss.
+
 ### System types
 
 At the moment most of the things are only used on macs. Although I have some branches that I have used in the past for specifik linux machines. 
