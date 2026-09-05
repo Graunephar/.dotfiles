@@ -1,7 +1,20 @@
 # Managed by .dotfiles — edit this file, not `crontab -e`.
 # Everything between the BEGIN/END markers is replaced on each ./install run.
 # Any cron jobs you add outside these markers are preserved.
+#
+# The daily `mackup backup -f` that used to live here is gone. Two reasons:
+#
+#  1. It ran on every machine, making both Macs mackup writers. mackup has no
+#     conflict resolution, so the older config silently destroys the newer one.
+#     The backup now lives in the MacBook's host profile only.
+#
+#  2. It failed silently for about three years. cron on modern macOS has no
+#     Full Disk Access, so every ~/Library path was denied, and cron's output
+#     went nowhere. Backups stopped around March 2023 and nothing surfaced it
+#     until a second Mac was set up in September 2026.
+#
+# Replaced by the launchd agent misc/dk.graunephar.mackup-backup.plist, which
+# logs to ~/Library/Logs/mackup-backup.log and verifies its own writes.
+#
 # BEGIN dotfiles-managed
-# Run mackup backup every day at 12:00 (midday)
-0 12 * * * mackup backup -f
 # END dotfiles-managed

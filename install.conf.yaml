@@ -80,8 +80,13 @@
     - [mkdir -p ~/.config && ln -sf ~/.dotfiles/karabiner.edn ~/.config/karabiner.edn] # no sudo: ~/.config is owned by you. The old `sudo` made a root-owned symlink for no reason.
 
 # End by running external setup tools
+#
+# NOTE: `mackup restore` deliberately does NOT run here. It overwrites local
+# config with whatever is in the Mackup folder - on the writer machine that
+# would destroy the only good copy. Restore belongs to the reader's host
+# profile (hosts/Daniels-Mac-Studio.conf.yaml), and even there it is manual:
+# use `mackup-pull <app>` with the app quit.
 - shell:
-    - mackup restore -f
     - ./misc/install-crontab.sh # merges misc/cronjobs into the crontab. Does NOT replace it — `crontab <file>` would wipe every job not in that file.
 
 # --- VNC hotkey pass-through -------------------------------------------------
