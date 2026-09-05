@@ -21,11 +21,10 @@
         force: true
         path: hosts/Daniels-MacBook-Pro-2
 
-    # The backup agent lives here, not in the shared config - only this
-    # machine should write to the Mackup folder.
-    ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist:
-        force: true
-        path: ./misc/dk.graunephar.mackup-backup.plist
 
 - shell:
-    - [launchctl bootout "gui/$(id -u)/dk.graunephar.mackup-backup" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist, "load mackup-backup agent (this machine is the mackup writer)"]
+    # The backup agent lives here, not in the shared config - only this
+    # machine should write to the Mackup folder. Copied rather than linked,
+    # to match how vnc-passthrough is handled.
+    - [rm -f ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist && cp -f ./misc/dk.graunephar.mackup-backup.plist ~/Library/LaunchAgents/, "copy mackup-backup agent"]
+    - [launchctl bootout "gui/$(id -u)/dk.graunephar.mackup-backup" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist 2>/dev/null; launchctl print "gui/$(id -u)/dk.graunephar.mackup-backup" >/dev/null, "load mackup-backup agent (this machine is the mackup writer)"]

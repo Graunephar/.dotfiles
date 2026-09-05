@@ -34,6 +34,7 @@
     - npm
     - yarn
     - clipboard
+    - bash # macOS ships bash 3.2 from 2007; sdkman's installer requires bash 4+
     - ruby # needed for colorls — system Ruby is locked down on modern macOS
 
 
@@ -41,7 +42,7 @@
 
 # install stuff through shell here
 - shell:
-    - curl -s "https://get.sdkman.io" | bash
+    - curl -s "https://get.sdkman.io" | "$(brew --prefix)/bin/bash" # NOT plain `bash`: macOS bash is 3.2 and sdkman refuses to install on it
 
 # install oh my sh and plugins
 - shell:
@@ -73,7 +74,9 @@
     # Custom mackup app definitions. These override mackup's stock ones.
     # bettertouchtool.cfg fixes a definition that has been silently broken for
     # years - see the comments in that file.
-    ~/.mackup/bettertouchtool.cfg: ./mackup/bettertouchtool.cfg
+    ~/.mackup/bettertouchtool.cfg:
+        force: true   # may already exist as a hand-made file on an older machine
+        path: ./mackup/bettertouchtool.cfg
     ~/.local/bin/fkill:
         create: true
         path: ./scripts/fkill.command
@@ -105,7 +108,7 @@
 # ("Bootstrap failed: 5: Input/output error"). It has to be a real file, so
 # re-run ./install after editing misc/dk.graunephar.vnc-passthrough.plist.
 - shell:
-    - [cp -f ./misc/dk.graunephar.vnc-passthrough.plist ~/Library/LaunchAgents/, "copy vnc-passthrough agent"]
+    - [rm -f ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist && cp -f ./misc/dk.graunephar.vnc-passthrough.plist ~/Library/LaunchAgents/, "copy vnc-passthrough agent"] # rm first: an older version of this repo linked it, and cp refuses to copy a file onto a symlink pointing back at itself
 
 - shell:
-    - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist, "load vnc-passthrough agent"]
+    - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist 2>/dev/null; launchctl print "gui/$(id -u)/dk.graunephar.vnc-passthrough" >/dev/null, "load vnc-passthrough agent"] # bootstrap errors if already loaded, so verify with print instead of trusting its exit code
