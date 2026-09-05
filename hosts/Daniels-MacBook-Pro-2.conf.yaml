@@ -1,0 +1,31 @@
+# Host profile: MacBook Pro - the everyday machine.
+#
+# Applied by ./install AFTER install.conf.yaml.
+#
+# This machine is the SINGLE WRITER for mackup. It backs up every 3 hours; the
+# Mac Studio only restores. mackup has no conflict resolution, so two machines
+# backing up to one folder means last-write-wins and the older config silently
+# destroys the newer one - which is exactly what happened on 2026-09-05 when
+# the Studio's agent overwrote this machine's BetterTouchTool config.
+#
+# Revisit once the Studio holds config worth keeping. The upgrade path is a
+# staleness guard in misc/mackup-backup.sh: refuse to back up when storage is
+# newer than local. Then both machines can write safely.
+
+- create:
+    - ~/.dotfiles-host
+    - ~/Library/LaunchAgents
+
+- link:
+    ~/.dotfiles-host:
+        force: true
+        path: hosts/Daniels-MacBook-Pro-2
+
+    # The backup agent lives here, not in the shared config - only this
+    # machine should write to the Mackup folder.
+    ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist:
+        force: true
+        path: ./misc/dk.graunephar.mackup-backup.plist
+
+- shell:
+    - [launchctl bootout "gui/$(id -u)/dk.graunephar.mackup-backup" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist, "load mackup-backup agent (this machine is the mackup writer)"]

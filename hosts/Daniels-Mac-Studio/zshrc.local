@@ -4,5 +4,22 @@
 # Deliberately near-empty: this machine is the lean AI work engine, and
 # anything both Macs want belongs in the shared zshrc instead.
 
-# Machine identity, handy in prompts and scripts.
 export DOTFILES_HOST="mac-studio"
+
+# This machine READS from mackup, it does not write. The MacBook is the single
+# writer - see hosts/Daniels-MacBook-Pro-2.conf.yaml for why.
+#
+# Restore is manual on purpose: mackup restore overwrites config files, and a
+# running app rewrites them again on quit. Quit the app first, then pull.
+mackup-pull() {
+  if [ $# -eq 0 ]; then
+    echo "usage: mackup-pull <app> [app...]    e.g. mackup-pull bettertouchtool iterm2"
+    echo "quit the app(s) first, or they overwrite what you just restored."
+    return 1
+  fi
+  for app in "$@"; do
+    mackup restore -f "$app" || return 1
+  done
+  killall cfprefsd 2>/dev/null
+  echo "restored: $* - relaunch the app(s) to pick it up"
+}

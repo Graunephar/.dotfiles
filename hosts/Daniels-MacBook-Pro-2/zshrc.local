@@ -1,0 +1,8 @@
+# Shell config specific to the MacBook Pro.
+#
+# Sourced at the end of the shared zshrc via ~/.dotfiles-host/zshrc.local.
+
+export DOTFILES_HOST="macbook"
+
+# This machine is the mackup writer; see hosts/Daniels-MacBook-Pro-2.conf.yaml.
+alias mackup-log='tail -30 ~/Library/Logs/mackup-backup.log'

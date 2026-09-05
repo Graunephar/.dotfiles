@@ -95,10 +95,6 @@
     ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist:
         force: true
         path: ./misc/dk.graunephar.vnc-passthrough.plist
-    ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist:
-        force: true
-        path: ./misc/dk.graunephar.mackup-backup.plist
 
 - shell:
     - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist, "load vnc-passthrough agent"]
-    - [launchctl bootout "gui/$(id -u)/dk.graunephar.mackup-backup" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.mackup-backup.plist, "load mackup-backup agent"]

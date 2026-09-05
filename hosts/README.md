@@ -40,6 +40,20 @@ cp hosts/Daniels-Mac-Studio/zshrc.local "hosts/$HOST/zshrc.local"
 Then edit both files and replace `Daniels-Mac-Studio` with the new host name in
 the `link:` path.
 
+## mackup: one writer
+
+mackup has no conflict resolution. Two machines backing up to one folder means
+last-write-wins, and the older config silently destroys the newer one. That is
+not theoretical - on 2026-09-05 the Studio's agent overwrote the MacBook's
+BetterTouchTool config within minutes of being enabled.
+
+So the backup agent lives in the **MacBook's** profile only. The Studio restores
+with `mackup-pull <app>` (defined in its `zshrc.local`) and never writes.
+
+Revisit once the Studio holds config worth keeping. The upgrade path is a
+staleness guard in `misc/mackup-backup.sh`: refuse to back up when storage is
+newer than local. Then both machines can write safely.
+
 ## What belongs here — and what does not
 
 Default to the **shared** config. Reach for a host profile only when something:
@@ -59,8 +73,8 @@ finding out months on that your two Macs disagree is not.
 
 | Host name (`LocalHostName`) | Machine | Role |
 |---|---|---|
-| `Daniels-Mac-Studio` | Mac Studio, M4 Max, 36 GB | AI work engine. Kept lean. |
-| `Daniels-MacBook-Pro-2` | MacBook Pro | Everyday machine, full setup. Profile not created yet. |
+| `Daniels-Mac-Studio` | Mac Studio, M4 Max, 36 GB | AI work engine. Kept lean. **Reads mackup only** - use `mackup-pull <app>`. |
+| `Daniels-MacBook-Pro-2` | MacBook Pro | Everyday machine, full setup. **Single writer for mackup** - runs the 3-hourly backup agent. |
 
 To add the MacBook, run `scutil --get LocalHostName` on it and follow
 "Adding a machine" above.
