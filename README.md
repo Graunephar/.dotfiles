@@ -43,7 +43,7 @@ So:
 - **MacBook is the writer.** It runs the backup agent, every 3 hours.
 - **Mac Studio only reads.** It has a `mackup-pull <app>` function in its `zshrc.local`. Quit the app, pull, relaunch.
 
-The agent is linked from the MacBook's host profile only, so running `./install` on the Studio can't accidentally make it a writer.
+The agent is linked from the MacBook's host profile only, so running `./install` on the Studio can't accidentally make it a writer. Same goes for any mac I set up later — no profile means no agent, so a new machine reads and never writes until I decide otherwise. That's the point of keeping the agent in a profile instead of the shared config: the rule is enforced by the setup, not by me remembering it.
 
 If the Studio ever holds config worth keeping, the way out is a staleness check in `misc/mackup-backup.sh`: refuse to back up when the folder is newer than local. Then both can write.
 
