@@ -80,6 +80,11 @@
     ~/.local/bin/fkill:
         create: true
         path: ./scripts/fkill.command
+    # Installs a Claude skill from my library, or anyone else's repo, into
+    # ~/.claude/skills. The copy is then just config, synced by mackup.
+    ~/.local/bin/skill-install:
+        create: true
+        path: ./scripts/skill-install
 
 
 

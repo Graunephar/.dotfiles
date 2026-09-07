@@ -20,7 +20,7 @@ Two things carry my config between machines, and they hold different stuff:
 
 **A private repo** — the app settings that can't live in a public repo: iTerm, Keyboard Maestro, BetterTouchTool and so on. Mackup's storage lives there, with anything sensitive encrypted at rest via git-crypt. It used to be cloud storage, which is why the old `mackup.cfg` pointed at a `Sync/` folder that hadn't existed for years.
 
-**A skills repo** — [github.com/Graunephar/skills](https://github.com/Graunephar/skills), the Claude skills I wrote, public so anyone can take them. The machines don't read from it; skills reach them through mackup like everything else. It's somewhere I publish to.
+**A skills library** — [github.com/Graunephar/skills](https://github.com/Graunephar/skills), public, the Claude skills I wrote. It's a library to install *from*, not a copy of anything and not a backup. Installing a skill from it is the same act as installing one from anywhere else: the copy that lands in `~/.claude/skills` is mine now, and mackup syncs it from there.
 
 So: **public repo for anything I'd show people, private repo for everything else.** The private repo has to be cloned and unlocked before `./install` is worth running, or mackup has nothing to read.
 
@@ -85,17 +85,25 @@ If it logs `WARNING`, that machine probably needs Full Disk Access for `/bin/zsh
 
 ## Claude skills
 
-Skills sync through mackup like everything else - `~/.claude/skills` is copied
-to and from the store, real files both ways.
+`~/.claude/skills` syncs through mackup like everything else. Real files, copied
+both ways, no symlinks and no special handling.
 
-[github.com/Graunephar/skills](https://github.com/Graunephar/skills) is separate
-and public: the ones I wrote, for anyone who wants them. It's a place I publish
-to, not a place the machines read from, so a skill that lives in both will drift
-unless I copy it across by hand.
+[github.com/Graunephar/skills](https://github.com/Graunephar/skills) is a
+**library, not a mirror**. I install from it the way I'd install from anyone
+else's skills repo, and from that moment the installed copy is just a skill on
+my machines - mackup owns it, and it can be edited without a thought about where
+it came from. Publishing a new version there is a separate, deliberate act.
 
-They were briefly symlinked into the store to avoid that duplication. Mackup 0.11
-copies rather than links, so restore followed every symlink and wrote real folders
-out anyway - the links only survived until the first restore.
+That's why "the same skill exists in two places" isn't drift: they aren't two
+copies of one thing. One is what I published; the other is what I installed and
+have since made my own. Anyone else installing from the library is in exactly
+the same position.
+
+The alternative - symlinking installed skills back at the library so the two can
+never differ - was tried and removed. Mackup 0.11 copies rather than links, so
+restore turned every symlink into a real folder on first run. It also framed the
+library as the live source, which is the wrong shape: a library you install from
+shouldn't reach into the machines that installed from it.
 
 ## Custom mackup app definitions
 

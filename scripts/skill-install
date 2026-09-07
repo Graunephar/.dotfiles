@@ -1,0 +1,73 @@
+#!/bin/bash
+# Install a Claude skill into ~/.claude/skills.
+#
+# The installed copy is yours: mackup syncs it to the other mac like any other
+# config, and editing it has nothing to do with wherever it came from. Nothing
+# links back to the source - that was tried, and mackup 0.11 copies rather than
+# links, so restore flattened every symlink on first run.
+#
+#   skill-install <name>              from my library (Graunephar/skills)
+#   skill-install <git-url> [name]    from anyone else's repo
+#   skill-install --list              what's in the library
+#
+# Add -f to replace a skill that's already installed.
+
+set -euo pipefail
+
+LIBRARY="https://github.com/Graunephar/skills.git"
+DEST="$HOME/.claude/skills"
+FORCE=""
+
+[ "${1:-}" = "-f" ] && { FORCE=1; shift; }
+
+die() { echo "skill-install: $*" >&2; exit 1; }
+
+# A shallow clone of just the metadata is enough to list or to copy one skill
+# out; cloning full history for a folder of markdown would be silly.
+fetch() {
+  tmp=$(mktemp -d)
+  git clone --quiet --depth 1 "$1" "$tmp/repo" 2>/dev/null || die "could not clone $1"
+  echo "$tmp/repo"
+}
+
+case "${1:-}" in
+  --list|"")
+    repo=$(fetch "$LIBRARY")
+    echo "Skills in the library:"
+    find "$repo" -maxdepth 1 -mindepth 1 -type d ! -name '.git' -exec basename {} \; | sort | sed 's/^/  /'
+    rm -rf "$(dirname "$repo")"
+    exit 0
+    ;;
+esac
+
+case "$1" in
+  *://*|git@*) src="$1"; name="${2:-}" ;;
+  *)           src="$LIBRARY"; name="$1" ;;
+esac
+
+repo=$(fetch "$src")
+trap 'rm -rf "$(dirname "$repo")"' EXIT
+
+# A dedicated skill repo usually has SKILL.md at its root; a library has one
+# folder per skill. Handle both so a bare repo URL just works.
+if [ -z "$name" ]; then
+  [ -f "$repo/SKILL.md" ] || die "no skill name given, and $src has no SKILL.md at its root"
+  name=$(basename "$src" .git)
+  srcdir="$repo"
+else
+  srcdir="$repo/$name"
+  [ -d "$srcdir" ] || die "no skill called '$name' in $src (try --list)"
+fi
+
+target="$DEST/$name"
+if [ -e "$target" ] && [ -z "$FORCE" ]; then
+  die "$name is already installed. Use -f to replace it."
+fi
+
+mkdir -p "$DEST"
+rm -rf "$target"
+cp -R "$srcdir" "$target"
+rm -rf "$target/.git"
+
+echo "installed $name -> $target"
+echo "run 'mackup backup' to sync it to the other mac"
