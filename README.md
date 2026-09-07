@@ -18,14 +18,14 @@ Two things carry my config between machines, and they hold different stuff:
 
 **This git repo** — shell config, karabiner.edn, git config, scripts, the install itself. It's public, so nothing sensitive goes in it. `./install` links it all into place with dotbot.
 
-**Proton Drive** — the app settings that can't live in a public repo: iTerm, Keyboard Maestro, BetterTouchTool and so on. Mackup copies them in and out of `~/Library/CloudStorage/ProtonDrive-…/Sync/Mackup`. It used to be pCloud, and sync.com before that, which is why the old `mackup.cfg` pointed at a `Sync/` folder that hadn't existed for years.
+**A private repo** — the app settings that can't live in a public repo: iTerm, Keyboard Maestro, BetterTouchTool and so on. Mackup's storage lives there, with anything sensitive encrypted at rest via git-crypt. It used to be cloud storage, which is why the old `mackup.cfg` pointed at a `Sync/` folder that hadn't existed for years.
 
-So: **repo for anything I'd show people, Proton for everything else.** Proton also has to be installed and signed in before `./install` is worth running, or mackup has nothing to read.
+So: **public repo for anything I'd show people, private repo for everything else.** The private repo has to be cloned and unlocked before `./install` is worth running, or mackup has nothing to read.
 
 On top of that, two rules keep the two macs from fighting:
 
 - **Host profiles** decide what each machine installs — see below.
-- **Only the MacBook writes to Proton.** The Studio reads. Mackup has no conflict resolution, so two writers means silent data loss.
+- **Only the MacBook writes to the mackup repo.** The Studio reads. Mackup has no conflict resolution of its own, so two writers means trusting git to catch what mackup won't.
 
 ### System types
 
@@ -45,7 +45,9 @@ See `hosts/README.md` for how to add a machine. Default to putting things in the
 
 # Mac Setup
 
-I use Mackup and dotbot to transfer settings between macs. Mackup stores its folder in **Proton Drive**, not in this repo, so I don't sync anything sensitive to github by mistake. Proton mounts through macOS File Provider, so the path under `~/Library/CloudStorage/` is the same on every mac signed into the account. Before that it was pCloud, and sync.com before that.
+I use Mackup and dotbot to transfer settings between macs. Mackup stores its folder in **a private repo**, not in this one, so nothing sensitive lands in a public repo by mistake.
+
+It used to live in cloud storage, and must never go back. Cloud drives mount through macOS File Provider, which only exists inside a logged-in user session — so root daemons can't read those paths at all. Karabiner's `core_service` runs as root, silently failed to load its config from there, and fell back on a years-old system copy. Every keybinding died, with nothing but a line in `/var/log/karabiner/core_service.log` to say why. A repo on ordinary disk doesn't have that problem.
 
 Note: Mackup 0.11 changed its defaults. `backup` and `restore` now **copy** files. The old symlink behaviour is opt-in with `mackup link install` / `mackup link` / `mackup link uninstall`. Both machines need to be on 0.11 or they disagree about what a backup even is.
 
@@ -73,7 +75,7 @@ This used to be a cron job. It stopped working around March 2023 and I didn't no
 The launchd version therefore:
 
 - logs every run to `~/Library/Logs/mackup-backup.log` (`mackup-log` on the MacBook)
-- stops if the Proton folder isn't there, instead of "succeeding" while writing nowhere
+- stops if the mackup folder isn't there, instead of "succeeding" while writing nowhere
 - checks after each run that something was actually written, and says `WARNING` if not
 - runs a missed job when the mac wakes up, which cron doesn't
 
@@ -87,7 +89,7 @@ Mackup's built-in BetterTouchTool definition points at `bttdata2` and `btt_data_
 
 ## Installation
 
-Proton Drive has to be installed and `Sync/Mackup` synced down before running ./install, otherwise mackup has nothing to work with.
+The private mackup repo has to be cloned and unlocked with git-crypt before running ./install, otherwise mackup has nothing to work with. Clone it to ordinary disk — never into a cloud-synced folder.
 
 run ./install to install all the things on a mac 
 

@@ -47,7 +47,7 @@
                 ;;Specific websites/SLAs
 
                 {:des "Remap Cmd+X to Tab then Enter"
-                 :rules [[:!Cx [[:key :tab] [:key :return_or_enter]]]]}
+                 :rules [[:!Cx [:tab :return_or_enter]]]}
 
 
                 ;;SYMBOLS
