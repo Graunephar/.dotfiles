@@ -112,3 +112,31 @@
 
 - shell:
     - [launchctl bootout "gui/$(id -u)/dk.graunephar.vnc-passthrough" 2>/dev/null; launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/dk.graunephar.vnc-passthrough.plist 2>/dev/null; launchctl print "gui/$(id -u)/dk.graunephar.vnc-passthrough" >/dev/null, "load vnc-passthrough agent"] # bootstrap errors if already loaded, so verify with print instead of trusting its exit code
+
+# --- Claude skills -----------------------------------------------------------
+# Skills come from two places and both are a source of truth:
+#
+#   ~/Git/skills                  my own skills, public on GitHub
+#   <mackup store>/.claude/skills installed and private skills, encrypted
+#
+# Mackup owns ~/.claude/skills and links it at the store, so the store is where
+# everything has to be visible. The loop below puts a symlink in the store for
+# every skill in the public repo, which is why nothing is duplicated: a skill
+# lives in exactly one repo, and both repos sync on their own.
+#
+# Absolute paths in those symlinks are fine - same username on both machines.
+- shell:
+    - [test -d ~/Git/skills || git clone https://github.com/Graunephar/skills.git ~/Git/skills, "clone public skills repo"]
+    - |
+      # Only creates missing links. A skill deleted from the public repo leaves
+      # a broken symlink behind on purpose: silently deleting from the store
+      # would be the one mistake there is no undo for.
+      store=~/Git/graunephar-private-mackup-sync/Mackup/.claude/skills
+      if [ -d "$store" ]; then
+        for d in ~/Git/skills/*/; do
+          n=$(basename "$d")
+          [ -e "$store/$n" ] || [ -L "$store/$n" ] || ln -s "$d" "$store/$n"
+        done
+      else
+        echo "skipping skill links: mackup store not cloned/unlocked yet"
+      fi
