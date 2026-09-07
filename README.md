@@ -113,7 +113,9 @@ Mackup's built-in BetterTouchTool definition points at `bttdata2` and `btt_data_
 
 ## Installation
 
-The private mackup repo has to be cloned and unlocked with git-crypt before running ./install, otherwise mackup has nothing to work with. Clone it to ordinary disk — never into a cloud-synced folder.
+The private mackup repo has to be cloned and unlocked with git-crypt before running ./install, otherwise mackup has nothing to work with.
+
+It goes at `~/.graunephar-private-mackup-sync`. Not `~/Git` — that's for code, things I work *on*. This is configuration: something the machine uses, that I only open when something's wrong, so it belongs with the other dotfiles. And never a cloud-synced folder, for the reason at the top of this file.
 
 run ./install to install all the things on a mac 
 
