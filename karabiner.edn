@@ -16,7 +16,6 @@
 {
  :templates    {:open        "open \"%s\""
                 :open-finder "open %s"
-                :alfred      "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\" '"
                 :kb-maestro  "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" '"
                 }
 
@@ -206,7 +205,6 @@
 
                 {:des   " System mode "
                  :rules [:system-mode
-                         [:x [:alfred "killProcess" "com.ngreenstein.alfred-process-killer"]]
                          [:a [:kb-maestro "app: ActivityMonitor"]]
 
                          ]}

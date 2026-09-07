@@ -113,7 +113,6 @@ BetterTouchTool used to be in this list. It goes through Mackup now, see above.
 - Keyboard Maestro
 - Karabiner (with Goku)
 - Better Touch Tool
-- ~~Alfred settings including workflows.~~ Currently trialling life without Alfred. `Sync/Alfred/` is kept as reference for configuring a replacement launcher.
 
 # Linux setup
 
