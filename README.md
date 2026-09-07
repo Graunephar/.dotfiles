@@ -20,7 +20,7 @@ Two things carry my config between machines, and they hold different stuff:
 
 **A private repo** — the app settings that can't live in a public repo: iTerm, Keyboard Maestro, BetterTouchTool and so on. Mackup's storage lives there, with anything sensitive encrypted at rest via git-crypt. It used to be cloud storage, which is why the old `mackup.cfg` pointed at a `Sync/` folder that hadn't existed for years.
 
-**A skills repo** — [github.com/Graunephar/skills](https://github.com/Graunephar/skills), my own Claude skills. Public on purpose: they're mine to give away, and its README collects other people's skills I like. Skills I install from elsewhere, and the private ones, stay in the mackup repo instead.
+**A skills repo** — [github.com/Graunephar/skills](https://github.com/Graunephar/skills), the Claude skills I wrote, public so anyone can take them. The machines don't read from it; skills reach them through mackup like everything else. It's somewhere I publish to.
 
 So: **public repo for anything I'd show people, private repo for everything else.** The private repo has to be cloned and unlocked before `./install` is worth running, or mackup has nothing to read.
 
@@ -83,32 +83,19 @@ The launchd version therefore:
 
 If it logs `WARNING`, that machine probably needs Full Disk Access for `/bin/zsh`.
 
-## Claude skills come from two repos
+## Claude skills
 
-`~/.claude/skills` holds every skill, but nothing actually lives there — mackup
-owns that folder and links it at the mackup store. The skills themselves sit in
-one of two repos, and both are a source of truth:
+Skills sync through mackup like everything else - `~/.claude/skills` is copied
+to and from the store, real files both ways.
 
-| Where | What | Visibility |
-|---|---|---|
-| `~/Git/skills` | skills I wrote | public |
-| mackup store, `.claude/skills/` | skills I installed, and private ones | private, git-crypt |
+[github.com/Graunephar/skills](https://github.com/Graunephar/skills) is separate
+and public: the ones I wrote, for anyone who wants them. It's a place I publish
+to, not a place the machines read from, so a skill that lives in both will drift
+unless I copy it across by hand.
 
-The trick is that the store contains a **symlink** for each skill in the public
-repo, pointing back at `~/Git/skills/<name>`. Git stores symlinks as symlinks, so
-the link survives a clone, and both machines have the same username and so the
-same absolute path.
-
-That means a skill exists in exactly one repo. Write one in `~/Git/skills` and it
-reaches the other mac through that repo; install one and it reaches the other mac
-through the mackup repo. Neither can drift from the other, because there is no
-second copy to drift.
-
-`./install` clones the public repo if it's missing and creates any symlink that
-isn't there yet. It only ever adds. Deleting a skill from the public repo leaves
-a broken symlink in the store on purpose — an install script that deletes files
-in the encrypted store is the one mistake with no undo.
-
+They were briefly symlinked into the store to avoid that duplication. Mackup 0.11
+copies rather than links, so restore followed every symlink and wrote real folders
+out anyway - the links only survived until the first restore.
 
 ## Custom mackup app definitions
 
