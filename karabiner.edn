@@ -51,12 +51,12 @@
 
                 ;;SYMBOLS
 
-                {:des "Place backlslash nicer" :rules [[:!Cgrave_accent_and_tilde :!SO7]]}
+                {:des "Place backlslash nicer" :rules [[:!Cnon_us_backslash :!SO7]]}
 
 
                 {:des "Place dollar sign under option S" :rules [
-                                                                 [:!Es :non_us_backslash]
-                                                                 [:!Os :non_us_backslash]
+                                                                 [:!Es :grave_accent_and_tilde]
+                                                                 [:!Os :grave_accent_and_tilde]
                                                                  ]}
 
                 ;;CAPS LOCK GOD MODE
@@ -144,18 +144,18 @@
                 ;; LAUNCH
 
                 {:des "Use $ as launcher for overlays" :rules [
-                                                               [:non_us_backslash :vk_none :screensharing {:alone :japanese_kana}] ;; VNC focused: send a keycode the LOCAL iTerm ignores so it forwards; remote iTerm hotkey profile listens for japanese_kana (key code 104)
-                                                               [:non_us_backslash :vk_none :!screensharing {:alone :japanese_eisuu}] ;; $ toggles iterm overlay - fires single event on key release only, avoiding double-toggle from down+up
-                                                               [:!Fnon_us_backslash [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
-                                                               [:!Snon_us_backslash :!CTOSg] ;;shift + $ → hyper+g → BTT listens for this to trigger ChatGPT overlay
-                                                               ;;[:!Onon_us_backslash  ] ;; this overlay mode is handled in BTT
-                                                               [:!Cnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;;
-                                                               ;[:!Tnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; control + $ MISSING
-                                                               ;[:!Qnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; right_command + $ MISSING
-                                                               ;[:!Wnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; right_control + $ MISSING
-                                                               ;[:!Enon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; right_option + $ MISSING
-                                                               ;[:!Rnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; right_shift + $ MISSING
-                                                               ;[:!QWERnon_us_backslash [:kb-maestro "Activate Mini Arc"]] ;; caps_lock + $ MISSING
+                                                               [:grave_accent_and_tilde :vk_none :screensharing {:alone :japanese_kana}] ;; VNC focused: send a keycode the LOCAL iTerm ignores so it forwards; remote iTerm hotkey profile listens for japanese_kana (key code 104)
+                                                               [:grave_accent_and_tilde :vk_none :!screensharing {:alone :japanese_eisuu}] ;; $ toggles iterm overlay - fires single event on key release only, avoiding double-toggle from down+up
+                                                               [:!Fgrave_accent_and_tilde [:kb-maestro "app: Toggl"]] ;;fn + $ toggles Toggl (remember to map Toggl to shift + option + f3 for this to work)
+                                                               [:!Sgrave_accent_and_tilde :!CTOSg] ;;shift + $ → hyper+g → BTT listens for this to trigger ChatGPT overlay
+                                                               ;;[:!Ograve_accent_and_tilde  ] ;; this overlay mode is handled in BTT
+                                                               [:!Cgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;;
+                                                               ;[:!Tgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; control + $ MISSING
+                                                               ;[:!Qgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; right_command + $ MISSING
+                                                               ;[:!Wgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; right_control + $ MISSING
+                                                               ;[:!Egrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; right_option + $ MISSING
+                                                               ;[:!Rgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; right_shift + $ MISSING
+                                                               ;[:!QWERgrave_accent_and_tilde [:kb-maestro "Activate Mini Arc"]] ;; caps_lock + $ MISSING
 
                                                                ]}
 
